@@ -196,6 +196,7 @@
     <Compile Include="Controllers\ProgramController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
@@ -241,6 +242,7 @@
     <Compile Include="Models\ProgramViewModel.cs" />
     <Compile Include="Models\StaffViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
+    <Compile Include="Models\SubjectViewModel.cs" />
     <Compile Include="MonthlyReport.cs">
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
@@ -368,6 +370,7 @@
     <Content Include="Views\Student\Delete.cshtml" />
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Subject\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -406,7 +409,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63338</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63338/</IISUrl>
+          <IISUrl>http://localhost:63339/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -8,6 +8,7 @@ namespace LMS.Models
 {
     public class ProgramViewModel
     {
+        
         public int ProgramId { get; set; }
         public string Name { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -16,5 +17,10 @@ namespace LMS.Models
         public System.DateTime AdmissionEnd { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime ClassesStart { get; set; }
+
+        public class ShowAllPrograms
+        {
+            public List<Program> allprograms { get; set; }
+        }
     }
 }
