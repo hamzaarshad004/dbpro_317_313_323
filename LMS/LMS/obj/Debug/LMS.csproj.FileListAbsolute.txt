@@ -1,0 +1,327 @@
+C:\Users\Hamza\Desktop\LMS\LMS\bin\LMS.dll.config
+C:\Users\Hamza\Desktop\LMS\LMS\bin\LMS.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\LMS.pdb
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\csc.exe
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\csc.exe.config
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\csc.rsp
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\csi.exe
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\csi.exe.config
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\csi.rsp
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.AppContext.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Console.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.IO.Compression.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Security.Claims.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.ValueTuple.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\vbc.exe
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\vbc.exe.config
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\vbc.rsp
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\VBCSCompiler.exe
+C:\Users\Hamza\Desktop\LMS\LMS\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Antlr3.Runtime.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\EntityFramework.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\EntityFramework.SqlServer.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Newtonsoft.Json.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Owin.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.Helpers.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.Mvc.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.Optimization.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.Razor.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.WebPages.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.WebPages.Razor.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\WebGrease.dll
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.Helpers.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.Mvc.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.Optimization.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.Razor.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.WebPages.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Web.WebPages.Razor.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Newtonsoft.Json.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Antlr3.Runtime.pdb
+C:\Users\Hamza\Desktop\LMS\LMS\bin\EntityFramework.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\EntityFramework.SqlServer.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\Hamza\Desktop\LMS\LMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Hamza\Desktop\LMS\LMS\obj\Debug\LMS.csprojAssemblyReference.cache
+C:\Users\Hamza\Desktop\LMS\LMS\obj\Debug\LMS.csproj.CoreCompileInputs.cache
+C:\Users\Hamza\Desktop\LMS\LMS\obj\Debug\LMS.csproj.CopyComplete
+C:\Users\Hamza\Desktop\LMS\LMS\obj\Debug\LMS.dll
+C:\Users\Hamza\Desktop\LMS\LMS\obj\Debug\LMS.pdb
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\LMS.dll.config
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\LMS.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\LMS.pdb
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\csc.exe
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\csc.exe.config
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\csc.rsp
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\csi.exe
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\csi.exe.config
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\csi.rsp
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.Managed.Core.targets
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.AppContext.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Collections.Immutable.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Console.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.IO.Compression.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.IO.FileSystem.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.IO.Pipes.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Reflection.Metadata.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Security.AccessControl.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Security.Claims.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Security.Principal.Windows.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.ValueTuple.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Xml.XmlDocument.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Xml.XPath.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\vbc.exe
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\vbc.exe.config
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\vbc.rsp
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\VBCSCompiler.exe
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\roslyn\VBCSCompiler.exe.config
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Antlr3.Runtime.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\EntityFramework.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\EntityFramework.SqlServer.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.Google.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Web.Infrastructure.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Newtonsoft.Json.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Owin.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Diagnostics.DiagnosticSource.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.Helpers.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.Mvc.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.Optimization.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.Razor.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.WebPages.Deployment.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.WebPages.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.WebPages.Razor.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\WebGrease.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.Helpers.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.Mvc.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.Optimization.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.Razor.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.WebPages.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.WebPages.Deployment.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Web.WebPages.Razor.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Newtonsoft.Json.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Antlr3.Runtime.pdb
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\EntityFramework.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\EntityFramework.SqlServer.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.Google.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\System.Diagnostics.DiagnosticSource.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS.csprojAssemblyReference.cache
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS.csproj.CoreCompileInputs.cache
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS.csproj.CopyComplete
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS.dll
+E:\University Stuff\6th Semester\DBMS\Lab\TermProject\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS.pdb
+E:\LMS\LMS\bin\LMS.dll.config
+E:\LMS\LMS\bin\LMS.dll
+E:\LMS\LMS\bin\LMS.pdb
+E:\LMS\LMS\bin\roslyn\csc.exe
+E:\LMS\LMS\bin\roslyn\csc.exe.config
+E:\LMS\LMS\bin\roslyn\csc.rsp
+E:\LMS\LMS\bin\roslyn\csi.exe
+E:\LMS\LMS\bin\roslyn\csi.exe.config
+E:\LMS\LMS\bin\roslyn\csi.rsp
+E:\LMS\LMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\LMS\LMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\LMS\LMS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\LMS\LMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\LMS\LMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\LMS\LMS\bin\roslyn\Microsoft.Managed.Core.targets
+E:\LMS\LMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\LMS\LMS\bin\roslyn\System.AppContext.dll
+E:\LMS\LMS\bin\roslyn\System.Collections.Immutable.dll
+E:\LMS\LMS\bin\roslyn\System.Console.dll
+E:\LMS\LMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\LMS\LMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\LMS\LMS\bin\roslyn\System.IO.Compression.dll
+E:\LMS\LMS\bin\roslyn\System.IO.FileSystem.dll
+E:\LMS\LMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\LMS\LMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\LMS\LMS\bin\roslyn\System.IO.Pipes.dll
+E:\LMS\LMS\bin\roslyn\System.Reflection.Metadata.dll
+E:\LMS\LMS\bin\roslyn\System.Security.AccessControl.dll
+E:\LMS\LMS\bin\roslyn\System.Security.Claims.dll
+E:\LMS\LMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\LMS\LMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\LMS\LMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\LMS\LMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\LMS\LMS\bin\roslyn\System.Security.Principal.Windows.dll
+E:\LMS\LMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\LMS\LMS\bin\roslyn\System.ValueTuple.dll
+E:\LMS\LMS\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\LMS\LMS\bin\roslyn\System.Xml.XmlDocument.dll
+E:\LMS\LMS\bin\roslyn\System.Xml.XPath.dll
+E:\LMS\LMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\LMS\LMS\bin\roslyn\vbc.exe
+E:\LMS\LMS\bin\roslyn\vbc.exe.config
+E:\LMS\LMS\bin\roslyn\vbc.rsp
+E:\LMS\LMS\bin\roslyn\VBCSCompiler.exe
+E:\LMS\LMS\bin\roslyn\VBCSCompiler.exe.config
+E:\LMS\LMS\bin\Antlr3.Runtime.dll
+E:\LMS\LMS\bin\EntityFramework.dll
+E:\LMS\LMS\bin\EntityFramework.SqlServer.dll
+E:\LMS\LMS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\LMS\LMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\LMS\LMS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\LMS\LMS\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\LMS\LMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\LMS\LMS\bin\Microsoft.Owin.dll
+E:\LMS\LMS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\LMS\LMS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\LMS\LMS\bin\Microsoft.Owin.Security.dll
+E:\LMS\LMS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\LMS\LMS\bin\Microsoft.Owin.Security.Google.dll
+E:\LMS\LMS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\LMS\LMS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\LMS\LMS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\LMS\LMS\bin\Microsoft.Web.Infrastructure.dll
+E:\LMS\LMS\bin\Newtonsoft.Json.dll
+E:\LMS\LMS\bin\Owin.dll
+E:\LMS\LMS\bin\System.Diagnostics.DiagnosticSource.dll
+E:\LMS\LMS\bin\System.Web.Helpers.dll
+E:\LMS\LMS\bin\System.Web.Mvc.dll
+E:\LMS\LMS\bin\System.Web.Optimization.dll
+E:\LMS\LMS\bin\System.Web.Razor.dll
+E:\LMS\LMS\bin\System.Web.WebPages.Deployment.dll
+E:\LMS\LMS\bin\System.Web.WebPages.dll
+E:\LMS\LMS\bin\System.Web.WebPages.Razor.dll
+E:\LMS\LMS\bin\WebGrease.dll
+E:\LMS\LMS\bin\System.Web.Helpers.xml
+E:\LMS\LMS\bin\System.Web.Mvc.xml
+E:\LMS\LMS\bin\System.Web.Optimization.xml
+E:\LMS\LMS\bin\System.Web.Razor.xml
+E:\LMS\LMS\bin\System.Web.WebPages.xml
+E:\LMS\LMS\bin\System.Web.WebPages.Deployment.xml
+E:\LMS\LMS\bin\System.Web.WebPages.Razor.xml
+E:\LMS\LMS\bin\Newtonsoft.Json.xml
+E:\LMS\LMS\bin\Antlr3.Runtime.pdb
+E:\LMS\LMS\bin\EntityFramework.xml
+E:\LMS\LMS\bin\EntityFramework.SqlServer.xml
+E:\LMS\LMS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\LMS\LMS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\LMS\LMS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\LMS\LMS\bin\Microsoft.Owin.xml
+E:\LMS\LMS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\LMS\LMS\bin\Microsoft.Owin.Security.xml
+E:\LMS\LMS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\LMS\LMS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\LMS\LMS\bin\Microsoft.Owin.Security.Google.xml
+E:\LMS\LMS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\LMS\LMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\LMS\LMS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\LMS\LMS\bin\System.Diagnostics.DiagnosticSource.xml
+E:\LMS\LMS\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\LMS\LMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\LMS\LMS\obj\Debug\LMS.csprojAssemblyReference.cache
+E:\LMS\LMS\obj\Debug\LMS.csproj.CoreCompileInputs.cache
+E:\LMS\LMS\obj\Debug\LMS.csproj.CopyComplete
+E:\LMS\LMS\obj\Debug\LMS.dll
+E:\LMS\LMS\obj\Debug\LMS.pdb

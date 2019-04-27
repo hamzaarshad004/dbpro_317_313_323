@@ -1,0 +1,866 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB45Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CalenderMonth">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Month" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.CourseTeacher' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CourseTeacher">
+    <Key>
+      <PropertyRef Name="StaffId" />
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.DailyAttendanceStaff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DailyAttendanceStaff">
+    <Key>
+      <PropertyRef Name="DateId" />
+      <PropertyRef Name="StaffId" />
+      <PropertyRef Name="AttendanceStatus" />
+    </Key>
+    <Property Name="DateId" Type="int" Nullable="false" />
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="AttendanceStatus" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.DailyAttendanceStudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DailyAttendanceStudent">
+    <Key>
+      <PropertyRef Name="DateId" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="AttendanceStatus" />
+    </Key>
+    <Property Name="DateId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="AttendanceStatus" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DateKeeper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrentDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="ExamId" />
+    </Key>
+    <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.ExamBySubject' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ExamBySubject">
+    <Key>
+      <PropertyRef Name="ExamId" />
+      <PropertyRef Name="SubjectId" />
+      <PropertyRef Name="TotalMarks" />
+      <PropertyRef Name="StartDateTime" />
+      <PropertyRef Name="EndTime" />
+    </Key>
+    <Property Name="ExamId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+    <Property Name="TotalMarks" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.Institute' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Institute">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="PhoneNumber" />
+    </Key>
+    <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MonthlyReports">
+    <Key>
+      <PropertyRef Name="MonthId" />
+    </Key>
+    <Property Name="MonthId" Type="int" Nullable="false" />
+    <Property Name="Expenses" Type="float" Nullable="false" />
+    <Property Name="Revenue" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="FatherName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Cnic" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Program">
+    <Key>
+      <PropertyRef Name="ProgramId" />
+    </Key>
+    <Property Name="ProgramId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="AdmissionStart" Type="datetime" Nullable="false" />
+    <Property Name="AdmissionEnd" Type="datetime" Nullable="false" />
+    <Property Name="ClassesStart" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.Result' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ExamId" />
+      <PropertyRef Name="SubjectId" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="ObtainedMarks" />
+    </Key>
+    <Property Name="ExamId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="ObtainedMarks" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="SectionId" />
+    </Key>
+    <Property Name="SectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SectionName" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="Batch" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TotalStudents" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="Designation" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="HireDate" Type="datetime" Nullable="false" />
+    <Property Name="MonthlySalary" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.StaffFine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StaffFine">
+    <Key>
+      <PropertyRef Name="DateId" />
+      <PropertyRef Name="StaffId" />
+      <PropertyRef Name="FineAmount" />
+    </Key>
+    <Property Name="DateId" Type="int" Nullable="false" />
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="FineAmount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="Batch" Type="int" Nullable="false" />
+    <Property Name="RollNo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="MonthlyFee" Type="float" Nullable="false" />
+    <Property Name="AdmissionDate" Type="datetime" Nullable="false" />
+    <Property Name="ProgramId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.StudentEnrolled' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StudentEnrolled">
+    <Key>
+      <PropertyRef Name="SubjectSectionId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="SubjectSectionId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.StudentFine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StudentFine">
+    <Key>
+      <PropertyRef Name="DateId" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="FineAmount" />
+    </Key>
+    <Property Name="DateId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="FineAmount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="ProgramId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectSections">
+    <Key>
+      <PropertyRef Name="SubjectSectionId" />
+    </Key>
+    <Property Name="SubjectSectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+    <Property Name="SectionId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TimeTable">
+    <Key>
+      <PropertyRef Name="SectionId" />
+      <PropertyRef Name="SubjectId" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="StartTime" />
+      <PropertyRef Name="EndTime" />
+    </Key>
+    <Property Name="SectionId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CourseTeacher_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="CourseTeacher" Type="Self.CourseTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="CourseTeacher">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseTeacher_Subjects">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+    <End Role="CourseTeacher" Type="Self.CourseTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="CourseTeacher">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DailyAttendanceStaff_DateKeeper">
+    <End Role="DateKeeper" Type="Self.DateKeeper" Multiplicity="1" />
+    <End Role="DailyAttendanceStaff" Type="Self.DailyAttendanceStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateKeeper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DailyAttendanceStaff">
+        <PropertyRef Name="DateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DailyAttendanceStaff_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="DailyAttendanceStaff" Type="Self.DailyAttendanceStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="DailyAttendanceStaff">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DailyAttendanceStudent_DateKeeper">
+    <End Role="DateKeeper" Type="Self.DateKeeper" Multiplicity="1" />
+    <End Role="DailyAttendanceStudent" Type="Self.DailyAttendanceStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateKeeper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DailyAttendanceStudent">
+        <PropertyRef Name="DateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DailyAttendanceStudent_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="DailyAttendanceStudent" Type="Self.DailyAttendanceStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="DailyAttendanceStudent">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamBySubject_Exam">
+    <End Role="Exam" Type="Self.Exam" Multiplicity="1" />
+    <End Role="ExamBySubject" Type="Self.ExamBySubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exam">
+        <PropertyRef Name="ExamId" />
+      </Principal>
+      <Dependent Role="ExamBySubject">
+        <PropertyRef Name="ExamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamBySubject_Subjects">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+    <End Role="ExamBySubject" Type="Self.ExamBySubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="ExamBySubject">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonthlyReports_CalenderMonth">
+    <End Role="CalenderMonth" Type="Self.CalenderMonth" Multiplicity="1" />
+    <End Role="MonthlyReports" Type="Self.MonthlyReports" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CalenderMonth">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MonthlyReports">
+        <PropertyRef Name="MonthId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_Exam">
+    <End Role="Exam" Type="Self.Exam" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exam">
+        <PropertyRef Name="ExamId" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="ExamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_Subjects">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonId" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StaffFine_DateKeeper">
+    <End Role="DateKeeper" Type="Self.DateKeeper" Multiplicity="1" />
+    <End Role="StaffFine" Type="Self.StaffFine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateKeeper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StaffFine">
+        <PropertyRef Name="DateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StaffFine_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="StaffFine" Type="Self.StaffFine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="StaffFine">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="ProgramId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="ProgramId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentEnrolled_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentEnrolled" Type="Self.StudentEnrolled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentEnrolled">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentEnrolled_SubjectSections">
+    <End Role="SubjectSections" Type="Self.SubjectSections" Multiplicity="1" />
+    <End Role="StudentEnrolled" Type="Self.StudentEnrolled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectSections">
+        <PropertyRef Name="SubjectSectionId" />
+      </Principal>
+      <Dependent Role="StudentEnrolled">
+        <PropertyRef Name="SubjectSectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentFine_DateKeeper">
+    <End Role="DateKeeper" Type="Self.DateKeeper" Multiplicity="1" />
+    <End Role="StudentFine" Type="Self.StudentFine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateKeeper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentFine">
+        <PropertyRef Name="DateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentFine_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentFine" Type="Self.StudentFine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentFine">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subjects_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="ProgramId" />
+      </Principal>
+      <Dependent Role="Subjects">
+        <PropertyRef Name="ProgramId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubjectSections_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="SubjectSections" Type="Self.SubjectSections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionId" />
+      </Principal>
+      <Dependent Role="SubjectSections">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubjectSections_Subjects">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+    <End Role="SubjectSections" Type="Self.SubjectSections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="SubjectSections">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TimeTable_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionId" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TimeTable_Subjects">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB45ModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CalenderMonth" EntityType="Self.CalenderMonth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DateKeeper" EntityType="Self.DateKeeper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MonthlyReports" EntityType="Self.MonthlyReports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectSections" EntityType="Self.SubjectSections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CourseTeacher" EntityType="Self.CourseTeacher" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CourseTeacher].[StaffId] AS [StaffId], 
+    [CourseTeacher].[SubjectId] AS [SubjectId]
+    FROM [dbo].[CourseTeacher] AS [CourseTeacher]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DailyAttendanceStaff" EntityType="Self.DailyAttendanceStaff" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DailyAttendanceStaff].[DateId] AS [DateId], 
+    [DailyAttendanceStaff].[StaffId] AS [StaffId], 
+    [DailyAttendanceStaff].[AttendanceStatus] AS [AttendanceStatus]
+    FROM [dbo].[DailyAttendanceStaff] AS [DailyAttendanceStaff]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DailyAttendanceStudent" EntityType="Self.DailyAttendanceStudent" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DailyAttendanceStudent].[DateId] AS [DateId], 
+    [DailyAttendanceStudent].[StudentId] AS [StudentId], 
+    [DailyAttendanceStudent].[AttendanceStatus] AS [AttendanceStatus]
+    FROM [dbo].[DailyAttendanceStudent] AS [DailyAttendanceStudent]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ExamBySubject" EntityType="Self.ExamBySubject" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ExamBySubject].[ExamId] AS [ExamId], 
+    [ExamBySubject].[SubjectId] AS [SubjectId], 
+    [ExamBySubject].[TotalMarks] AS [TotalMarks], 
+    [ExamBySubject].[StartDateTime] AS [StartDateTime], 
+    [ExamBySubject].[EndTime] AS [EndTime]
+    FROM [dbo].[ExamBySubject] AS [ExamBySubject]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Institute" EntityType="Self.Institute" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Institute].[Name] AS [Name], 
+    [Institute].[Address] AS [Address], 
+    [Institute].[PhoneNumber] AS [PhoneNumber]
+    FROM [dbo].[Institute] AS [Institute]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Result" EntityType="Self.Result" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Result].[ExamId] AS [ExamId], 
+    [Result].[SubjectId] AS [SubjectId], 
+    [Result].[StudentId] AS [StudentId], 
+    [Result].[ObtainedMarks] AS [ObtainedMarks]
+    FROM [dbo].[Result] AS [Result]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StaffFine" EntityType="Self.StaffFine" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StaffFine].[DateId] AS [DateId], 
+    [StaffFine].[StaffId] AS [StaffId], 
+    [StaffFine].[FineAmount] AS [FineAmount]
+    FROM [dbo].[StaffFine] AS [StaffFine]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StudentEnrolled" EntityType="Self.StudentEnrolled" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StudentEnrolled].[SubjectSectionId] AS [SubjectSectionId], 
+    [StudentEnrolled].[StudentId] AS [StudentId]
+    FROM [dbo].[StudentEnrolled] AS [StudentEnrolled]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StudentFine" EntityType="Self.StudentFine" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StudentFine].[DateId] AS [DateId], 
+    [StudentFine].[StudentId] AS [StudentId], 
+    [StudentFine].[FineAmount] AS [FineAmount]
+    FROM [dbo].[StudentFine] AS [StudentFine]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TimeTable" EntityType="Self.TimeTable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TimeTable].[SectionId] AS [SectionId], 
+    [TimeTable].[SubjectId] AS [SubjectId], 
+    [TimeTable].[Day] AS [Day], 
+    [TimeTable].[StartTime] AS [StartTime], 
+    [TimeTable].[EndTime] AS [EndTime]
+    FROM [dbo].[TimeTable] AS [TimeTable]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CourseTeacher_Staff" Association="Self.FK_CourseTeacher_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="CourseTeacher" EntitySet="CourseTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseTeacher_Subjects" Association="Self.FK_CourseTeacher_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="CourseTeacher" EntitySet="CourseTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DailyAttendanceStaff_DateKeeper" Association="Self.FK_DailyAttendanceStaff_DateKeeper">
+      <End Role="DateKeeper" EntitySet="DateKeeper" />
+      <End Role="DailyAttendanceStaff" EntitySet="DailyAttendanceStaff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DailyAttendanceStaff_Staff" Association="Self.FK_DailyAttendanceStaff_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="DailyAttendanceStaff" EntitySet="DailyAttendanceStaff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DailyAttendanceStudent_DateKeeper" Association="Self.FK_DailyAttendanceStudent_DateKeeper">
+      <End Role="DateKeeper" EntitySet="DateKeeper" />
+      <End Role="DailyAttendanceStudent" EntitySet="DailyAttendanceStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DailyAttendanceStudent_Student" Association="Self.FK_DailyAttendanceStudent_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="DailyAttendanceStudent" EntitySet="DailyAttendanceStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamBySubject_Exam" Association="Self.FK_ExamBySubject_Exam">
+      <End Role="Exam" EntitySet="Exam" />
+      <End Role="ExamBySubject" EntitySet="ExamBySubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamBySubject_Subjects" Association="Self.FK_ExamBySubject_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="ExamBySubject" EntitySet="ExamBySubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonthlyReports_CalenderMonth" Association="Self.FK_MonthlyReports_CalenderMonth">
+      <End Role="CalenderMonth" EntitySet="CalenderMonth" />
+      <End Role="MonthlyReports" EntitySet="MonthlyReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_Exam" Association="Self.FK_Result_Exam">
+      <End Role="Exam" EntitySet="Exam" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_Student" Association="Self.FK_Result_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_Subjects" Association="Self.FK_Result_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Person" Association="Self.FK_Staff_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StaffFine_DateKeeper" Association="Self.FK_StaffFine_DateKeeper">
+      <End Role="DateKeeper" EntitySet="DateKeeper" />
+      <End Role="StaffFine" EntitySet="StaffFine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StaffFine_Staff" Association="Self.FK_StaffFine_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="StaffFine" EntitySet="StaffFine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Program" Association="Self.FK_Student_Program">
+      <End Role="Program" EntitySet="Program" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEnrolled_Student" Association="Self.FK_StudentEnrolled_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentEnrolled" EntitySet="StudentEnrolled" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEnrolled_SubjectSections" Association="Self.FK_StudentEnrolled_SubjectSections">
+      <End Role="SubjectSections" EntitySet="SubjectSections" />
+      <End Role="StudentEnrolled" EntitySet="StudentEnrolled" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentFine_DateKeeper" Association="Self.FK_StudentFine_DateKeeper">
+      <End Role="DateKeeper" EntitySet="DateKeeper" />
+      <End Role="StudentFine" EntitySet="StudentFine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentFine_Student" Association="Self.FK_StudentFine_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentFine" EntitySet="StudentFine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subjects_Program" Association="Self.FK_Subjects_Program">
+      <End Role="Program" EntitySet="Program" />
+      <End Role="Subjects" EntitySet="Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubjectSections_Section" Association="Self.FK_SubjectSections_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="SubjectSections" EntitySet="SubjectSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubjectSections_Subjects" Association="Self.FK_SubjectSections_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="SubjectSections" EntitySet="SubjectSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TimeTable_Section" Association="Self.FK_TimeTable_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="TimeTable" EntitySet="TimeTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TimeTable_Subjects" Association="Self.FK_TimeTable_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="TimeTable" EntitySet="TimeTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
