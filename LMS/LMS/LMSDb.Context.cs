@@ -31,11 +31,9 @@ namespace LMS
         public virtual DbSet<MonthlyReport> MonthlyReports { get; set; }
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Program> Programs { get; set; }
-        public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
-        public virtual DbSet<SubjectSection> SubjectSections { get; set; }
         public virtual DbSet<DailyAttendanceStaff> DailyAttendanceStaffs { get; set; }
         public virtual DbSet<DailyAttendanceStudent> DailyAttendanceStudents { get; set; }
         public virtual DbSet<ExamBySubject> ExamBySubjects { get; set; }
@@ -49,5 +47,6 @@ namespace LMS
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Section> Sections { get; set; }
     }
 }

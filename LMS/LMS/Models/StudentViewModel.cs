@@ -26,5 +26,36 @@ namespace LMS.Models
 
         [DisplayName("Degree Program")]
         public IEnumerable<Program> Programs { get; set; }
+
+        public int SectionAssigned { get; set; }
+
+        public int checkAssigned(int id)
+        {
+            DB45Entities db = new DB45Entities();
+            var S = db.Sections.ToList();
+            var Student = db.Students.Where(c => c.StudentId == id).First();
+            int check = 0;
+            foreach( var sec in S)
+            {
+                if (sec.Students.Contains(Student))
+                {
+                    check = 1;
+                    break;
+                }
+                else
+                {
+
+                }
+            }
+            return check;
+        }
+    }
+
+    public class SectionsList
+    {
+        public int SectionId { get; set; }
+
+        [DisplayName("Section: ")]
+        public IEnumerable<Section> Sections { get; set; }
     }
 }

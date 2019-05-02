@@ -194,6 +194,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
@@ -240,6 +241,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProgramViewModel.cs" />
+    <Compile Include="Models\SectionViewModel.cs" />
     <Compile Include="Models\StaffViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
@@ -273,9 +275,6 @@
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Subject.cs">
-      <DependentUpon>LMSDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubjectSection.cs">
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
     <Compile Include="TimeTable.cs">
@@ -373,6 +372,12 @@
     <Content Include="Views\Subject\AddSubjects.cshtml" />
     <Content Include="Views\Subject\ViewSubjects.cshtml" />
     <Content Include="Views\Subject\EditSubjects.cshtml" />
+    <Content Include="Views\Section\Index.cshtml" />
+    <Content Include="Views\Section\AddSection.cshtml" />
+    <Content Include="Views\Section\EditSection.cshtml" />
+    <Content Include="Views\Section\Delete.cshtml" />
+    <Content Include="Views\Student\AssignSection.cshtml" />
+    <Content Include="Views\Section\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

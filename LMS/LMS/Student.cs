@@ -20,7 +20,7 @@ namespace LMS
             this.DailyAttendanceStudents = new HashSet<DailyAttendanceStudent>();
             this.Results = new HashSet<Result>();
             this.StudentFines = new HashSet<StudentFine>();
-            this.SubjectSections = new HashSet<SubjectSection>();
+            this.Sections = new HashSet<Section>();
         }
     
         public int StudentId { get; set; }
@@ -39,6 +39,6 @@ namespace LMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentFine> StudentFines { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SubjectSection> SubjectSections { get; set; }
+        public virtual ICollection<Section> Sections { get; set; }
     }
 }

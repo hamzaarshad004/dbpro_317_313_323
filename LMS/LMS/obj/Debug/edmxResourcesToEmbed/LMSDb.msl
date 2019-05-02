@@ -58,16 +58,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Sections">
-      <EntityTypeMapping TypeName="DB45Model.Section">
-        <MappingFragment StoreEntitySet="Section">
-          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
-          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
-          <ScalarProperty Name="TotalStudents" ColumnName="TotalStudents" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Staffs">
       <EntityTypeMapping TypeName="DB45Model.Staff">
         <MappingFragment StoreEntitySet="Staff">
@@ -96,15 +86,6 @@
           <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
           <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
           <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SubjectSections">
-      <EntityTypeMapping TypeName="DB45Model.SubjectSection">
-        <MappingFragment StoreEntitySet="SubjectSections">
-          <ScalarProperty Name="SubjectSectionId" ColumnName="SubjectSectionId" />
-          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -193,14 +174,6 @@
         <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="StudentEnrolled" TypeName="DB45Model.StudentEnrolled" StoreEntitySet="StudentEnrolled">
-      <EndProperty Name="Student">
-        <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-      </EndProperty>
-      <EndProperty Name="SubjectSections">
-        <ScalarProperty Name="SubjectSectionId" ColumnName="SubjectSectionId" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="DB45Model.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -262,6 +235,24 @@
       </EndProperty>
       <EndProperty Name="AspNetRole">
         <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Sections">
+      <EntityTypeMapping TypeName="DB45Model.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="TotalStudents" ColumnName="TotalStudents" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="StudentSection" TypeName="DB45Model.StudentSection" StoreEntitySet="StudentSection">
+      <EndProperty Name="Student">
+        <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+      </EndProperty>
+      <EndProperty Name="Section">
+        <ScalarProperty Name="SectionId" ColumnName="SectionId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

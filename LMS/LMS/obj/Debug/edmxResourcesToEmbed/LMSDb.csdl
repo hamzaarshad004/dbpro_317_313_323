@@ -63,17 +63,6 @@
     <NavigationProperty Name="Students" Relationship="Self.FK_Student_Program" FromRole="Program" ToRole="Student" />
     <NavigationProperty Name="Subjects" Relationship="Self.FK_Subjects_Program" FromRole="Program" ToRole="Subjects" />
   </EntityType>
-  <EntityType Name="Section">
-    <Key>
-      <PropertyRef Name="SectionId" />
-    </Key>
-    <Property Name="SectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SectionName" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="Batch" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="TotalStudents" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="SubjectSections" Relationship="Self.FK_SubjectSections_Section" FromRole="Section" ToRole="SubjectSections" />
-    <NavigationProperty Name="TimeTables" Relationship="Self.FK_TimeTable_Section" FromRole="Section" ToRole="TimeTable" />
-  </EntityType>
   <EntityType Name="Staff">
     <Key>
       <PropertyRef Name="StaffId" />
@@ -102,7 +91,7 @@
     <NavigationProperty Name="DailyAttendanceStudents" Relationship="Self.FK_DailyAttendanceStudent_Student" FromRole="Student" ToRole="DailyAttendanceStudent" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Result_Student" FromRole="Student" ToRole="Result" />
     <NavigationProperty Name="StudentFines" Relationship="Self.FK_StudentFine_Student" FromRole="Student" ToRole="StudentFine" />
-    <NavigationProperty Name="SubjectSections" Relationship="Self.StudentEnrolled" FromRole="Student" ToRole="SubjectSections" />
+    <NavigationProperty Name="Sections" Relationship="DB45Model.StudentSection" FromRole="Student" ToRole="Section" />
   </EntityType>
   <EntityType Name="Subject">
     <Key>
@@ -114,20 +103,8 @@
     <NavigationProperty Name="Program" Relationship="Self.FK_Subjects_Program" FromRole="Subjects" ToRole="Program" />
     <NavigationProperty Name="ExamBySubjects" Relationship="Self.FK_ExamBySubject_Subjects" FromRole="Subjects" ToRole="ExamBySubject" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Result_Subjects" FromRole="Subjects" ToRole="Result" />
-    <NavigationProperty Name="SubjectSections" Relationship="Self.FK_SubjectSections_Subjects" FromRole="Subjects" ToRole="SubjectSections" />
     <NavigationProperty Name="TimeTables" Relationship="Self.FK_TimeTable_Subjects" FromRole="Subjects" ToRole="TimeTable" />
     <NavigationProperty Name="Staffs" Relationship="Self.CourseTeacher" FromRole="Subjects" ToRole="Staff" />
-  </EntityType>
-  <EntityType Name="SubjectSection">
-    <Key>
-      <PropertyRef Name="SubjectSectionId" />
-    </Key>
-    <Property Name="SubjectSectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SubjectId" Type="Int32" Nullable="false" />
-    <Property Name="SectionId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Section" Relationship="Self.FK_SubjectSections_Section" FromRole="SubjectSections" ToRole="Section" />
-    <NavigationProperty Name="Subject" Relationship="Self.FK_SubjectSections_Subjects" FromRole="SubjectSections" ToRole="Subjects" />
-    <NavigationProperty Name="Students" Relationship="Self.StudentEnrolled" FromRole="SubjectSections" ToRole="Student" />
   </EntityType>
   <EntityType Name="DailyAttendanceStaff">
     <Key>
@@ -231,8 +208,8 @@
     <Property Name="Day" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Section" Relationship="Self.FK_TimeTable_Section" FromRole="TimeTable" ToRole="Section" />
     <NavigationProperty Name="Subject" Relationship="Self.FK_TimeTable_Subjects" FromRole="TimeTable" ToRole="Subjects" />
+    <NavigationProperty Name="Section" Relationship="DB45Model.FK_TimeTable_Section" FromRole="TimeTable" ToRole="Section" />
   </EntityType>
   <Association Name="FK_MonthlyReports_CalenderMonth">
     <End Role="CalenderMonth" Type="Self.CalenderMonth" Multiplicity="1" />
@@ -366,30 +343,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SubjectSections_Section">
-    <End Role="Section" Type="Self.Section" Multiplicity="1" />
-    <End Role="SubjectSections" Type="Self.SubjectSection" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Section">
-        <PropertyRef Name="SectionId" />
-      </Principal>
-      <Dependent Role="SubjectSections">
-        <PropertyRef Name="SectionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TimeTable_Section">
-    <End Role="Section" Type="Self.Section" Multiplicity="1" />
-    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Section">
-        <PropertyRef Name="SectionId" />
-      </Principal>
-      <Dependent Role="TimeTable">
-        <PropertyRef Name="SectionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_DailyAttendanceStaff_Staff">
     <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
     <End Role="DailyAttendanceStaff" Type="Self.DailyAttendanceStaff" Multiplicity="*" />
@@ -474,18 +427,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SubjectSections_Subjects">
-    <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
-    <End Role="SubjectSections" Type="Self.SubjectSection" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subjects">
-        <PropertyRef Name="SubjectId" />
-      </Principal>
-      <Dependent Role="SubjectSections">
-        <PropertyRef Name="SubjectId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_TimeTable_Subjects">
     <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
     <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
@@ -502,10 +443,6 @@
     <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
     <End Role="Subjects" Type="Self.Subject" Multiplicity="*" />
   </Association>
-  <Association Name="StudentEnrolled">
-    <End Role="Student" Type="Self.Student" Multiplicity="*" />
-    <End Role="SubjectSections" Type="Self.SubjectSection" Multiplicity="*" />
-  </Association>
   <EntityContainer Name="DB45Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CalenderMonths" EntityType="Self.CalenderMonth" />
     <EntitySet Name="DateKeepers" EntityType="Self.DateKeeper" />
@@ -513,11 +450,9 @@
     <EntitySet Name="MonthlyReports" EntityType="Self.MonthlyReport" />
     <EntitySet Name="People" EntityType="Self.Person" />
     <EntitySet Name="Programs" EntityType="Self.Program" />
-    <EntitySet Name="Sections" EntityType="Self.Section" />
     <EntitySet Name="Staffs" EntityType="Self.Staff" />
     <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="Subjects" EntityType="Self.Subject" />
-    <EntitySet Name="SubjectSections" EntityType="Self.SubjectSection" />
     <EntitySet Name="DailyAttendanceStaffs" EntityType="Self.DailyAttendanceStaff" />
     <EntitySet Name="DailyAttendanceStudents" EntityType="Self.DailyAttendanceStudent" />
     <EntitySet Name="ExamBySubjects" EntityType="Self.ExamBySubject" />
@@ -570,14 +505,6 @@
       <End Role="Program" EntitySet="Programs" />
       <End Role="Subjects" EntitySet="Subjects" />
     </AssociationSet>
-    <AssociationSet Name="FK_SubjectSections_Section" Association="Self.FK_SubjectSections_Section">
-      <End Role="Section" EntitySet="Sections" />
-      <End Role="SubjectSections" EntitySet="SubjectSections" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TimeTable_Section" Association="Self.FK_TimeTable_Section">
-      <End Role="Section" EntitySet="Sections" />
-      <End Role="TimeTable" EntitySet="TimeTables" />
-    </AssociationSet>
     <AssociationSet Name="FK_DailyAttendanceStaff_Staff" Association="Self.FK_DailyAttendanceStaff_Staff">
       <End Role="Staff" EntitySet="Staffs" />
       <End Role="DailyAttendanceStaff" EntitySet="DailyAttendanceStaffs" />
@@ -606,10 +533,6 @@
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
-    <AssociationSet Name="FK_SubjectSections_Subjects" Association="Self.FK_SubjectSections_Subjects">
-      <End Role="Subjects" EntitySet="Subjects" />
-      <End Role="SubjectSections" EntitySet="SubjectSections" />
-    </AssociationSet>
     <AssociationSet Name="FK_TimeTable_Subjects" Association="Self.FK_TimeTable_Subjects">
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="TimeTable" EntitySet="TimeTables" />
@@ -617,10 +540,6 @@
     <AssociationSet Name="CourseTeacher" Association="Self.CourseTeacher">
       <End Role="Staff" EntitySet="Staffs" />
       <End Role="Subjects" EntitySet="Subjects" />
-    </AssociationSet>
-    <AssociationSet Name="StudentEnrolled" Association="Self.StudentEnrolled">
-      <End Role="Student" EntitySet="Students" />
-      <End Role="SubjectSections" EntitySet="SubjectSections" />
     </AssociationSet>
     <EntitySet Name="C__MigrationHistory" EntityType="DB45Model.C__MigrationHistory" />
     <EntitySet Name="AspNetRoles" EntityType="DB45Model.AspNetRole" />
@@ -638,6 +557,15 @@
     <AssociationSet Name="AspNetUserRoles" Association="DB45Model.AspNetUserRoles">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="Sections" EntityType="DB45Model.Section" />
+    <AssociationSet Name="FK_TimeTable_Section" Association="DB45Model.FK_TimeTable_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="TimeTable" EntitySet="TimeTables" />
+    </AssociationSet>
+    <AssociationSet Name="StudentSection" Association="DB45Model.StudentSection">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="Student" EntitySet="Students" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
@@ -730,5 +658,32 @@
   <Association Name="AspNetUserRoles">
     <End Type="DB45Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
     <End Type="DB45Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="SectionId" />
+    </Key>
+    <Property Name="SectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SectionName" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Batch" Type="Int32" Nullable="false" />
+    <Property Name="TotalStudents" Type="Int32" />
+    <NavigationProperty Name="TimeTables" Relationship="DB45Model.FK_TimeTable_Section" FromRole="Section" ToRole="TimeTable" />
+    <NavigationProperty Name="Students" Relationship="DB45Model.StudentSection" FromRole="Section" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK_TimeTable_Section">
+    <End Type="DB45Model.Section" Role="Section" Multiplicity="1" />
+    <End Type="DB45Model.TimeTable" Role="TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionId" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StudentSection">
+    <End Type="DB45Model.Section" Role="Section" Multiplicity="*" />
+    <End Type="DB45Model.Student" Role="Student" Multiplicity="*" />
   </Association>
 </Schema>

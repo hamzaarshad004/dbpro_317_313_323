@@ -194,8 +194,8 @@ warning 6002: The table/view 'DB45.dbo.Result' does not have a primary key defin
     </Key>
     <Property Name="SectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SectionName" Type="char" MaxLength="2" Nullable="false" />
-    <Property Name="Batch" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="TotalStudents" Type="int" Nullable="false" />
+    <Property Name="Batch" Type="int" Nullable="false" />
+    <Property Name="TotalStudents" Type="int" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -230,16 +230,6 @@ warning 6002: The table/view 'DB45.dbo.StaffFine' does not have a primary key de
     <Property Name="ProgramId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.StudentEnrolled' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="StudentEnrolled">
-    <Key>
-      <PropertyRef Name="SubjectSectionId" />
-      <PropertyRef Name="StudentId" />
-    </Key>
-    <Property Name="SubjectSectionId" Type="int" Nullable="false" />
-    <Property Name="StudentId" Type="int" Nullable="false" />
-  </EntityType>
-  <!--Errors Found During Generation:
 warning 6002: The table/view 'DB45.dbo.StudentFine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="StudentFine">
     <Key>
@@ -251,6 +241,14 @@ warning 6002: The table/view 'DB45.dbo.StudentFine' does not have a primary key 
     <Property Name="StudentId" Type="int" Nullable="false" />
     <Property Name="FineAmount" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="StudentSection">
+    <Key>
+      <PropertyRef Name="SectionId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="SectionId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Subjects">
     <Key>
       <PropertyRef Name="SubjectId" />
@@ -258,14 +256,6 @@ warning 6002: The table/view 'DB45.dbo.StudentFine' does not have a primary key 
     <Property Name="ProgramId" Type="int" Nullable="false" />
     <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubjectName" Type="varchar" MaxLength="30" Nullable="false" />
-  </EntityType>
-  <EntityType Name="SubjectSections">
-    <Key>
-      <PropertyRef Name="SubjectSectionId" />
-    </Key>
-    <Property Name="SubjectSectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SubjectId" Type="int" Nullable="false" />
-    <Property Name="SectionId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -543,30 +533,6 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_StudentEnrolled_Student">
-    <End Role="Student" Type="Self.Student" Multiplicity="1" />
-    <End Role="StudentEnrolled" Type="Self.StudentEnrolled" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Student">
-        <PropertyRef Name="StudentId" />
-      </Principal>
-      <Dependent Role="StudentEnrolled">
-        <PropertyRef Name="StudentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_StudentEnrolled_SubjectSections">
-    <End Role="SubjectSections" Type="Self.SubjectSections" Multiplicity="1" />
-    <End Role="StudentEnrolled" Type="Self.StudentEnrolled" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubjectSections">
-        <PropertyRef Name="SubjectSectionId" />
-      </Principal>
-      <Dependent Role="StudentEnrolled">
-        <PropertyRef Name="SubjectSectionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_StudentFine_DateKeeper">
     <End Role="DateKeeper" Type="Self.DateKeeper" Multiplicity="1" />
     <End Role="StudentFine" Type="Self.StudentFine" Multiplicity="*" />
@@ -591,6 +557,30 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_StudentSection_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="StudentSection" Type="Self.StudentSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionId" />
+      </Principal>
+      <Dependent Role="StudentSection">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentSection_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentSection" Type="Self.StudentSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentSection">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Subjects_Program">
     <End Role="Program" Type="Self.Program" Multiplicity="1" />
     <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
@@ -600,30 +590,6 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
       </Principal>
       <Dependent Role="Subjects">
         <PropertyRef Name="ProgramId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubjectSections_Section">
-    <End Role="Section" Type="Self.Section" Multiplicity="1" />
-    <End Role="SubjectSections" Type="Self.SubjectSections" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Section">
-        <PropertyRef Name="SectionId" />
-      </Principal>
-      <Dependent Role="SubjectSections">
-        <PropertyRef Name="SectionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubjectSections_Subjects">
-    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
-    <End Role="SubjectSections" Type="Self.SubjectSections" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subjects">
-        <PropertyRef Name="SubjectId" />
-      </Principal>
-      <Dependent Role="SubjectSections">
-        <PropertyRef Name="SubjectId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -667,8 +633,8 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
     <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentSection" EntityType="Self.StudentSection" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SubjectSections" EntityType="Self.SubjectSections" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CourseTeacher" EntityType="Self.CourseTeacher" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [CourseTeacher].[StaffId] AS [StaffId], 
@@ -719,12 +685,6 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
     [StaffFine].[StaffId] AS [StaffId], 
     [StaffFine].[FineAmount] AS [FineAmount]
     FROM [dbo].[StaffFine] AS [StaffFine]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="StudentEnrolled" EntityType="Self.StudentEnrolled" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [StudentEnrolled].[SubjectSectionId] AS [SubjectSectionId], 
-    [StudentEnrolled].[StudentId] AS [StudentId]
-    FROM [dbo].[StudentEnrolled] AS [StudentEnrolled]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="StudentFine" EntityType="Self.StudentFine" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -826,14 +786,6 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
       <End Role="Program" EntitySet="Program" />
       <End Role="Student" EntitySet="Student" />
     </AssociationSet>
-    <AssociationSet Name="FK_StudentEnrolled_Student" Association="Self.FK_StudentEnrolled_Student">
-      <End Role="Student" EntitySet="Student" />
-      <End Role="StudentEnrolled" EntitySet="StudentEnrolled" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StudentEnrolled_SubjectSections" Association="Self.FK_StudentEnrolled_SubjectSections">
-      <End Role="SubjectSections" EntitySet="SubjectSections" />
-      <End Role="StudentEnrolled" EntitySet="StudentEnrolled" />
-    </AssociationSet>
     <AssociationSet Name="FK_StudentFine_DateKeeper" Association="Self.FK_StudentFine_DateKeeper">
       <End Role="DateKeeper" EntitySet="DateKeeper" />
       <End Role="StudentFine" EntitySet="StudentFine" />
@@ -842,17 +794,17 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
       <End Role="Student" EntitySet="Student" />
       <End Role="StudentFine" EntitySet="StudentFine" />
     </AssociationSet>
+    <AssociationSet Name="FK_StudentSection_Section" Association="Self.FK_StudentSection_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="StudentSection" EntitySet="StudentSection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSection_Student" Association="Self.FK_StudentSection_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentSection" EntitySet="StudentSection" />
+    </AssociationSet>
     <AssociationSet Name="FK_Subjects_Program" Association="Self.FK_Subjects_Program">
       <End Role="Program" EntitySet="Program" />
       <End Role="Subjects" EntitySet="Subjects" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubjectSections_Section" Association="Self.FK_SubjectSections_Section">
-      <End Role="Section" EntitySet="Section" />
-      <End Role="SubjectSections" EntitySet="SubjectSections" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubjectSections_Subjects" Association="Self.FK_SubjectSections_Subjects">
-      <End Role="Subjects" EntitySet="Subjects" />
-      <End Role="SubjectSections" EntitySet="SubjectSections" />
     </AssociationSet>
     <AssociationSet Name="FK_TimeTable_Section" Association="Self.FK_TimeTable_Section">
       <End Role="Section" EntitySet="Section" />

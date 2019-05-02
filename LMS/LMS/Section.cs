@@ -17,18 +17,18 @@ namespace LMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Section()
         {
-            this.SubjectSections = new HashSet<SubjectSection>();
             this.TimeTables = new HashSet<TimeTable>();
+            this.Students = new HashSet<Student>();
         }
     
         public int SectionId { get; set; }
         public string SectionName { get; set; }
-        public string Batch { get; set; }
-        public int TotalStudents { get; set; }
+        public int Batch { get; set; }
+        public Nullable<int> TotalStudents { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SubjectSection> SubjectSections { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TimeTable> TimeTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

@@ -19,7 +19,6 @@ namespace LMS
         {
             this.ExamBySubjects = new HashSet<ExamBySubject>();
             this.Results = new HashSet<Result>();
-            this.SubjectSections = new HashSet<SubjectSection>();
             this.TimeTables = new HashSet<TimeTable>();
             this.Staffs = new HashSet<Staff>();
         }
@@ -33,8 +32,6 @@ namespace LMS
         public virtual ICollection<ExamBySubject> ExamBySubjects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SubjectSection> SubjectSections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TimeTable> TimeTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

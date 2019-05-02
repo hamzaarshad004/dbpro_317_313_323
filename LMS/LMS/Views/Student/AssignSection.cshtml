@@ -1,0 +1,41 @@
+﻿
+@model LMS.Models.SectionsList
+
+@{
+    ViewBag.Title = "AssignSection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AssignSection</h2>
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sections, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.SectionId, new SelectList(Model.Sections, "SectionId", "SectionName"), "Select Section", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SectionId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Assign" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

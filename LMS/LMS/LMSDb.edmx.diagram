@@ -4,18 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6bc052c110804d32a9ade58bffc0b7e4" Name="Diagram1">
+      <Diagram DiagramId="6bc052c110804d32a9ade58bffc0b7e4" Name="Diagram1" ZoomLevel="67">
         <EntityTypeShape EntityType="DB45Model.CalenderMonth" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.DateKeeper" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.Exam" Width="1.5" PointX="8.25" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.MonthlyReport" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.Person" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.Program" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Section" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.Staff" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.Student" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.Subject" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.SubjectSection" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.DailyAttendanceStaff" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.DailyAttendanceStudent" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB45Model.ExamBySubject" Width="1.5" PointX="7.5" PointY="15" IsExpanded="true" />
@@ -35,8 +33,6 @@
         <AssociationConnector Association="DB45Model.FK_Student_Person" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.FK_Student_Program" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.FK_Subjects_Program" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_SubjectSections_Section" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_TimeTable_Section" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.FK_DailyAttendanceStaff_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.FK_StaffFine_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.FK_DailyAttendanceStudent_Student" ManuallyRouted="false" />
@@ -44,10 +40,8 @@
         <AssociationConnector Association="DB45Model.FK_StudentFine_Student" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.FK_ExamBySubject_Subjects" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.FK_Result_Subjects" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_SubjectSections_Subjects" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.FK_TimeTable_Subjects" ManuallyRouted="false" />
         <AssociationConnector Association="DB45Model.CourseTeacher" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.StudentEnrolled" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DB45Model.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="6.75" />
         <EntityTypeShape EntityType="DB45Model.AspNetRole" Width="1.5" PointX="10.375" PointY="2.5" />
         <EntityTypeShape EntityType="DB45Model.AspNetUserClaim" Width="1.5" PointX="14.875" PointY="3.625" />
@@ -56,6 +50,9 @@
         <AssociationConnector Association="DB45Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DB45Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DB45Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="DB45Model.Section" Width="1.5" PointX="2.25" PointY="15.25" />
+        <AssociationConnector Association="DB45Model.FK_TimeTable_Section" />
+        <AssociationConnector Association="DB45Model.StudentSection" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -34,6 +34,7 @@ namespace LMS.Controllers
                 student.Batch = S.batch;
                 student.MonthlyFee = S.fee;
                 student.ProgramId = S.programId;
+                student.SectionAssigned = student.checkAssigned(S.Id);
 
                 students.Add(student);
             }
@@ -234,6 +235,27 @@ namespace LMS.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult AssignSection(int id)
+        {
+            SectionsList list = new SectionsList();
+            Student student = db.Students.Where(c => c.StudentId == id).First();
+            int batch = student.Batch;
+            list.Sections = db.Sections.Where(c => c.Batch == batch);
+            return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult AssignSection(int id, SectionsList model)
+        {
+            var S = db.Sections.Where(c => c.SectionId == model.SectionId).First();
+            S.TotalStudents = S.TotalStudents + 1;
+            S.Students.Add(db.Students.Where(c => c.StudentId == id).First());
+           
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
