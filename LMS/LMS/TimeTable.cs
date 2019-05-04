@@ -14,6 +14,7 @@ namespace LMS
     
     public partial class TimeTable
     {
+        public int timetableId { get; set; }
         public int SectionId { get; set; }
         public int SubjectId { get; set; }
         public string Day { get; set; }

@@ -74,7 +74,7 @@ namespace LMS.Controllers
             }
             catch
             {
-                return View();
+                return View("AddSection");
             }
         }
 

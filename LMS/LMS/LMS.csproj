@@ -198,6 +198,7 @@
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\TimeTableController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
@@ -247,6 +248,7 @@
     <Compile Include="Models\StaffViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
+    <Compile Include="Models\TimeTableViewModel.cs" />
     <Compile Include="MonthlyReport.cs">
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
@@ -384,6 +386,11 @@
     <Content Include="Views\Section\StudentAttendance.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CheckBoxListItemStaff.cshtml" />
     <Content Include="Views\Staff\StaffAttendance.cshtml" />
+    <Content Include="Views\TimeTable\Index.cshtml" />
+    <Content Include="Views\TimeTable\AddTimeTable.cshtml" />
+    <Content Include="Views\TimeTable\TimeTableDetails.cshtml" />
+    <Content Include="Views\TimeTable\DeleteTimeTable.cshtml" />
+    <Content Include="Views\TimeTable\EditTimeTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
