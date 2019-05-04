@@ -150,5 +150,92 @@ namespace LMS.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult StudentAttendance(int id)
+        {
+            StudentAttendanceModel attendance = new StudentAttendanceModel();
+            var Students = db.Students.ToList();
+            var Section = db.Sections.First(c => c.SectionId == id);
+            var StudentsInSection = Section.Students;
+            var checkBoxListItems = new List<CheckBoxListItem>();
+            foreach (Student S in StudentsInSection)
+            {
+                checkBoxListItems.Add(new CheckBoxListItem()
+                {
+                    ID = S.StudentId,
+                    Display = S.RollNo,
+                    IsChecked = false 
+                });
+            }
+            attendance.Students = checkBoxListItems;
+            return View(attendance);
+        }
+
+        [HttpPost]
+        public ActionResult StudentAttendance(StudentAttendanceModel model)
+        {
+            int CurrentId = checkDateInDb(model.SelectedDate);
+            var Students = model.Students;
+
+            
+
+            foreach(var S in Students)
+            {
+                var checkMarked = db.DailyAttendanceStudents.Where(c => c.StudentId == S.ID && c.DateId == CurrentId).FirstOrDefault();
+                if (checkMarked != null)
+                {
+                    if (S.IsChecked)
+                    {
+                        checkMarked.AttendanceStatus = "Present";
+                    }
+                    else
+                    {
+                        checkMarked.AttendanceStatus = "Absent";
+                    }
+                    db.SaveChanges();
+                }
+                else
+                {
+                    DailyAttendanceStudent attendanceStudent = new DailyAttendanceStudent();
+                    StudentFine fine = new StudentFine();
+                    attendanceStudent.DateId = CurrentId;
+                    attendanceStudent.StudentId = S.ID;
+                    if (S.IsChecked)
+                    {
+                        attendanceStudent.AttendanceStatus = "Present";
+                    }
+                    else
+                    {
+                        attendanceStudent.AttendanceStatus = "Absent";
+                    }
+                    db.DailyAttendanceStudents.Add(attendanceStudent);
+                }
+
+               
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        int checkDateInDb(System.DateTime currentDate)
+        {
+            var check = db.DateKeepers.FirstOrDefault(c => c.CurrentDate == currentDate);
+            if (check != null)
+            {
+                return check.Id;
+            }
+            else
+            {
+                DateKeeper date = new DateKeeper();
+                date.CurrentDate = currentDate;
+                db.DateKeepers.Add(date);
+                db.SaveChanges();
+
+                return date.Id;
+            }
+
+        }
     }
 }

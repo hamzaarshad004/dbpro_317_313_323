@@ -25,28 +25,28 @@ namespace LMS
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CalenderMonth> CalenderMonths { get; set; }
-        public virtual DbSet<DateKeeper> DateKeepers { get; set; }
-        public virtual DbSet<Exam> Exams { get; set; }
-        public virtual DbSet<MonthlyReport> MonthlyReports { get; set; }
-        public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<Program> Programs { get; set; }
-        public virtual DbSet<Staff> Staffs { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
-        public virtual DbSet<Subject> Subjects { get; set; }
-        public virtual DbSet<DailyAttendanceStaff> DailyAttendanceStaffs { get; set; }
-        public virtual DbSet<DailyAttendanceStudent> DailyAttendanceStudents { get; set; }
-        public virtual DbSet<ExamBySubject> ExamBySubjects { get; set; }
-        public virtual DbSet<Institute> Institutes { get; set; }
-        public virtual DbSet<Result> Results { get; set; }
-        public virtual DbSet<StaffFine> StaffFines { get; set; }
-        public virtual DbSet<StudentFine> StudentFines { get; set; }
-        public virtual DbSet<TimeTable> TimeTables { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<CalenderMonth> CalenderMonths { get; set; }
+        public virtual DbSet<DailyAttendanceStaff> DailyAttendanceStaffs { get; set; }
+        public virtual DbSet<DailyAttendanceStudent> DailyAttendanceStudents { get; set; }
+        public virtual DbSet<DateKeeper> DateKeepers { get; set; }
+        public virtual DbSet<Exam> Exams { get; set; }
+        public virtual DbSet<ExamBySubject> ExamBySubjects { get; set; }
+        public virtual DbSet<Institute> Institutes { get; set; }
+        public virtual DbSet<MonthlyReport> MonthlyReports { get; set; }
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Program> Programs { get; set; }
+        public virtual DbSet<Result> Results { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<StaffFine> StaffFines { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<StudentFine> StudentFines { get; set; }
+        public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<TimeTable> TimeTables { get; set; }
     }
 }

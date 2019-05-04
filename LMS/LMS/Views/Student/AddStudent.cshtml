@@ -5,18 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    List<String> Genders = new List<string>();
+    Genders.Add("M");
+    Genders.Add("F");
+    ViewBag.Categories = Genders.Select(x => new SelectListItem() { Value = x, Text = x }).ToList();
+
+}
+
 <h2>AddStudent</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>StudentViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -45,7 +53,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Gender, new SelectList(ViewBag.Categories, "Value", "Text"), "Select Gender", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,7 +74,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Batch, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -95,7 +103,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AdmissionDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AdmissionDate, new { htmlAttributes = new {@type = "date", @class = "form-control" } })
+                @Html.EditorFor(model => model.AdmissionDate, new { htmlAttributes = new { @type = "date", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AdmissionDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -103,7 +111,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Programs, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ProgramId, new SelectList(Model.Programs, "ProgramId", "Name"), "Select Degree", new { @class = "form-control"})
+                @Html.DropDownListFor(model => model.ProgramId, new SelectList(Model.Programs, "ProgramId", "Name"), "Select Degree", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ProgramId, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -49,6 +49,7 @@ namespace LMS.Models
             }
             return check;
         }
+
     }
 
     public class SectionsList
@@ -57,5 +58,16 @@ namespace LMS.Models
 
         [DisplayName("Section: ")]
         public IEnumerable<Section> Sections { get; set; }
+    }
+
+    public class StudentAttendanceModel
+    {
+        public System.DateTime SelectedDate { get; set; }
+        public List<CheckBoxListItem> Students { get; set; }
+
+        public StudentAttendanceModel()
+        {
+            Students = new List<CheckBoxListItem>();
+        }
     }
 }

@@ -1,0 +1,8 @@
+﻿@model LMS.Models.CheckBoxListItemStaff
+
+@Html.HiddenFor(x => x.ID)
+@Html.CheckBoxFor(x => x.IsChecked)
+@Html.LabelFor(x => x.IsChecked, Model.Display)
+|
+@Html.LabelFor(x => x.IsChecked, Model.DisplayDesignation)
+<br />

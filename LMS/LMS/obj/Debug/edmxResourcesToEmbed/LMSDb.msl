@@ -1,16 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB45ModelStoreContainer" CdmEntityContainer="DB45Entities">
+  <EntityContainerMapping StorageEntityContainer="LMSDbStoreContainer" CdmEntityContainer="DB45Entities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="LMSDb.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="LMSDb.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="LMSDb.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="LMSDb.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="LMSDb.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CalenderMonths">
-      <EntityTypeMapping TypeName="DB45Model.CalenderMonth">
+      <EntityTypeMapping TypeName="LMSDb.CalenderMonth">
         <MappingFragment StoreEntitySet="CalenderMonth">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Month" ColumnName="Month" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DailyAttendanceStaffs">
+      <EntityTypeMapping TypeName="LMSDb.DailyAttendanceStaff">
+        <MappingFragment StoreEntitySet="DailyAttendanceStaff">
+          <ScalarProperty Name="DateId" ColumnName="DateId" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="AttendanceStatus" ColumnName="AttendanceStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyAttendanceStudents">
+      <EntityTypeMapping TypeName="LMSDb.DailyAttendanceStudent">
+        <MappingFragment StoreEntitySet="DailyAttendanceStudent">
+          <ScalarProperty Name="DateId" ColumnName="DateId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="AttendanceStatus" ColumnName="AttendanceStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DateKeepers">
-      <EntityTypeMapping TypeName="DB45Model.DateKeeper">
+      <EntityTypeMapping TypeName="LMSDb.DateKeeper">
         <MappingFragment StoreEntitySet="DateKeeper">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CurrentDate" ColumnName="CurrentDate" />
@@ -18,15 +91,35 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Exams">
-      <EntityTypeMapping TypeName="DB45Model.Exam">
+      <EntityTypeMapping TypeName="LMSDb.Exam">
         <MappingFragment StoreEntitySet="Exam">
           <ScalarProperty Name="ExamId" ColumnName="ExamId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ExamBySubjects">
+      <EntityTypeMapping TypeName="LMSDb.ExamBySubject">
+        <MappingFragment StoreEntitySet="ExamBySubject">
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Institutes">
+      <EntityTypeMapping TypeName="LMSDb.Institute">
+        <MappingFragment StoreEntitySet="Institute">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="MonthlyReports">
-      <EntityTypeMapping TypeName="DB45Model.MonthlyReport">
+      <EntityTypeMapping TypeName="LMSDb.MonthlyReport">
         <MappingFragment StoreEntitySet="MonthlyReports">
           <ScalarProperty Name="MonthId" ColumnName="MonthId" />
           <ScalarProperty Name="Expenses" ColumnName="Expenses" />
@@ -35,7 +128,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="People">
-      <EntityTypeMapping TypeName="DB45Model.Person">
+      <EntityTypeMapping TypeName="LMSDb.Person">
         <MappingFragment StoreEntitySet="Person">
           <ScalarProperty Name="PersonId" ColumnName="PersonId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -48,7 +141,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Programs">
-      <EntityTypeMapping TypeName="DB45Model.Program">
+      <EntityTypeMapping TypeName="LMSDb.Program">
         <MappingFragment StoreEntitySet="Program">
           <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -58,8 +151,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="LMSDb.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="ObtainedMarks" ColumnName="ObtainedMarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sections">
+      <EntityTypeMapping TypeName="LMSDb.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="TotalStudents" ColumnName="TotalStudents" />
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Staffs">
-      <EntityTypeMapping TypeName="DB45Model.Staff">
+      <EntityTypeMapping TypeName="LMSDb.Staff">
         <MappingFragment StoreEntitySet="Staff">
           <ScalarProperty Name="StaffId" ColumnName="StaffId" />
           <ScalarProperty Name="Designation" ColumnName="Designation" />
@@ -68,8 +182,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="StaffFines">
+      <EntityTypeMapping TypeName="LMSDb.StaffFine">
+        <MappingFragment StoreEntitySet="StaffFine">
+          <ScalarProperty Name="DateId" ColumnName="DateId" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="FineAmount" ColumnName="FineAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Students">
-      <EntityTypeMapping TypeName="DB45Model.Student">
+      <EntityTypeMapping TypeName="LMSDb.Student">
         <MappingFragment StoreEntitySet="Student">
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="Batch" ColumnName="Batch" />
@@ -80,74 +203,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Subjects">
-      <EntityTypeMapping TypeName="DB45Model.Subject">
-        <MappingFragment StoreEntitySet="Subjects">
-          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
-          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DailyAttendanceStaffs">
-      <EntityTypeMapping TypeName="DB45Model.DailyAttendanceStaff">
-        <MappingFragment StoreEntitySet="DailyAttendanceStaff">
-          <ScalarProperty Name="DateId" ColumnName="DateId" />
-          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
-          <ScalarProperty Name="AttendanceStatus" ColumnName="AttendanceStatus" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DailyAttendanceStudents">
-      <EntityTypeMapping TypeName="DB45Model.DailyAttendanceStudent">
-        <MappingFragment StoreEntitySet="DailyAttendanceStudent">
-          <ScalarProperty Name="DateId" ColumnName="DateId" />
-          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-          <ScalarProperty Name="AttendanceStatus" ColumnName="AttendanceStatus" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ExamBySubjects">
-      <EntityTypeMapping TypeName="DB45Model.ExamBySubject">
-        <MappingFragment StoreEntitySet="ExamBySubject">
-          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
-          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
-          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
-          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Institutes">
-      <EntityTypeMapping TypeName="DB45Model.Institute">
-        <MappingFragment StoreEntitySet="Institute">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Results">
-      <EntityTypeMapping TypeName="DB45Model.Result">
-        <MappingFragment StoreEntitySet="Result">
-          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
-          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-          <ScalarProperty Name="ObtainedMarks" ColumnName="ObtainedMarks" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StaffFines">
-      <EntityTypeMapping TypeName="DB45Model.StaffFine">
-        <MappingFragment StoreEntitySet="StaffFine">
-          <ScalarProperty Name="DateId" ColumnName="DateId" />
-          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
-          <ScalarProperty Name="FineAmount" ColumnName="FineAmount" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="StudentFines">
-      <EntityTypeMapping TypeName="DB45Model.StudentFine">
+      <EntityTypeMapping TypeName="LMSDb.StudentFine">
         <MappingFragment StoreEntitySet="StudentFine">
           <ScalarProperty Name="DateId" ColumnName="DateId" />
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
@@ -155,8 +212,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="LMSDb.Subject">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TimeTables">
-      <EntityTypeMapping TypeName="DB45Model.TimeTable">
+      <EntityTypeMapping TypeName="LMSDb.TimeTable">
         <MappingFragment StoreEntitySet="TimeTable">
           <ScalarProperty Name="SectionId" ColumnName="SectionId" />
           <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
@@ -166,7 +232,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="CourseTeacher" TypeName="DB45Model.CourseTeacher" StoreEntitySet="CourseTeacher">
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="LMSDb.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CourseTeacher" TypeName="LMSDb.CourseTeacher" StoreEntitySet="CourseTeacher">
       <EndProperty Name="Staff">
         <ScalarProperty Name="StaffId" ColumnName="StaffId" />
       </EndProperty>
@@ -174,85 +248,12 @@
         <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="DB45Model.C__MigrationHistory">
-        <MappingFragment StoreEntitySet="__MigrationHistory">
-          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
-          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="DB45Model.AspNetRole">
-        <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="DB45Model.AspNetUserClaim">
-        <MappingFragment StoreEntitySet="AspNetUserClaims">
-          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="DB45Model.AspNetUserLogin">
-        <MappingFragment StoreEntitySet="AspNetUserLogins">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="DB45Model.AspNetUser">
-        <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="AspNetUserRoles" TypeName="DB45Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetUser">
-        <ScalarProperty Name="Id" ColumnName="UserId" />
-      </EndProperty>
-      <EndProperty Name="AspNetRole">
-        <ScalarProperty Name="Id" ColumnName="RoleId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <EntitySetMapping Name="Sections">
-      <EntityTypeMapping TypeName="DB45Model.Section">
-        <MappingFragment StoreEntitySet="Section">
-          <ScalarProperty Name="TotalStudents" ColumnName="TotalStudents" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
-          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
-          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="StudentSection" TypeName="DB45Model.StudentSection" StoreEntitySet="StudentSection">
-      <EndProperty Name="Student">
-        <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-      </EndProperty>
+    <AssociationSetMapping Name="StudentSection" TypeName="LMSDb.StudentSection" StoreEntitySet="StudentSection">
       <EndProperty Name="Section">
         <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+      </EndProperty>
+      <EndProperty Name="Student">
+        <ScalarProperty Name="StudentId" ColumnName="StudentId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

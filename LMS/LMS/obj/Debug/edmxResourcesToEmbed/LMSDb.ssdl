@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DB45Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="LMSDb.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="__MigrationHistory">
     <Key>
       <PropertyRef Name="MigrationId" />
@@ -68,8 +68,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Month" Type="datetime" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.CourseTeacher' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CourseTeacher">
     <Key>
       <PropertyRef Name="StaffId" />
@@ -78,25 +76,19 @@ warning 6002: The table/view 'DB45.dbo.CourseTeacher' does not have a primary ke
     <Property Name="StaffId" Type="int" Nullable="false" />
     <Property Name="SubjectId" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.DailyAttendanceStaff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="DailyAttendanceStaff">
     <Key>
       <PropertyRef Name="DateId" />
       <PropertyRef Name="StaffId" />
-      <PropertyRef Name="AttendanceStatus" />
     </Key>
     <Property Name="DateId" Type="int" Nullable="false" />
     <Property Name="StaffId" Type="int" Nullable="false" />
     <Property Name="AttendanceStatus" Type="varchar" MaxLength="15" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.DailyAttendanceStudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="DailyAttendanceStudent">
     <Key>
       <PropertyRef Name="DateId" />
       <PropertyRef Name="StudentId" />
-      <PropertyRef Name="AttendanceStatus" />
     </Key>
     <Property Name="DateId" Type="int" Nullable="false" />
     <Property Name="StudentId" Type="int" Nullable="false" />
@@ -116,15 +108,10 @@ warning 6002: The table/view 'DB45.dbo.DailyAttendanceStudent' does not have a p
     <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.ExamBySubject' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ExamBySubject">
     <Key>
       <PropertyRef Name="ExamId" />
       <PropertyRef Name="SubjectId" />
-      <PropertyRef Name="TotalMarks" />
-      <PropertyRef Name="StartDateTime" />
-      <PropertyRef Name="EndTime" />
     </Key>
     <Property Name="ExamId" Type="int" Nullable="false" />
     <Property Name="SubjectId" Type="int" Nullable="false" />
@@ -132,13 +119,9 @@ warning 6002: The table/view 'DB45.dbo.ExamBySubject' does not have a primary ke
     <Property Name="StartDateTime" Type="datetime" Nullable="false" />
     <Property Name="EndTime" Type="datetime" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.Institute' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Institute">
     <Key>
       <PropertyRef Name="Name" />
-      <PropertyRef Name="Address" />
-      <PropertyRef Name="PhoneNumber" />
     </Key>
     <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
@@ -174,14 +157,11 @@ warning 6002: The table/view 'DB45.dbo.Institute' does not have a primary key de
     <Property Name="AdmissionEnd" Type="datetime" Nullable="false" />
     <Property Name="ClassesStart" Type="datetime" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.Result' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Result">
     <Key>
       <PropertyRef Name="ExamId" />
       <PropertyRef Name="SubjectId" />
       <PropertyRef Name="StudentId" />
-      <PropertyRef Name="ObtainedMarks" />
     </Key>
     <Property Name="ExamId" Type="int" Nullable="false" />
     <Property Name="SubjectId" Type="int" Nullable="false" />
@@ -196,6 +176,7 @@ warning 6002: The table/view 'DB45.dbo.Result' does not have a primary key defin
     <Property Name="SectionName" Type="char" MaxLength="2" Nullable="false" />
     <Property Name="Batch" Type="int" Nullable="false" />
     <Property Name="TotalStudents" Type="int" />
+    <Property Name="ProgramId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -206,13 +187,10 @@ warning 6002: The table/view 'DB45.dbo.Result' does not have a primary key defin
     <Property Name="HireDate" Type="datetime" Nullable="false" />
     <Property Name="MonthlySalary" Type="float" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.StaffFine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="StaffFine">
     <Key>
       <PropertyRef Name="DateId" />
       <PropertyRef Name="StaffId" />
-      <PropertyRef Name="FineAmount" />
     </Key>
     <Property Name="DateId" Type="int" Nullable="false" />
     <Property Name="StaffId" Type="int" Nullable="false" />
@@ -229,13 +207,10 @@ warning 6002: The table/view 'DB45.dbo.StaffFine' does not have a primary key de
     <Property Name="AdmissionDate" Type="datetime" Nullable="false" />
     <Property Name="ProgramId" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.StudentFine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="StudentFine">
     <Key>
       <PropertyRef Name="DateId" />
       <PropertyRef Name="StudentId" />
-      <PropertyRef Name="FineAmount" />
     </Key>
     <Property Name="DateId" Type="int" Nullable="false" />
     <Property Name="StudentId" Type="int" Nullable="false" />
@@ -257,15 +232,12 @@ warning 6002: The table/view 'DB45.dbo.StudentFine' does not have a primary key 
     <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubjectName" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="TimeTable">
     <Key>
       <PropertyRef Name="SectionId" />
       <PropertyRef Name="SubjectId" />
       <PropertyRef Name="Day" />
       <PropertyRef Name="StartTime" />
-      <PropertyRef Name="EndTime" />
     </Key>
     <Property Name="SectionId" Type="int" Nullable="false" />
     <Property Name="SubjectId" Type="int" Nullable="false" />
@@ -473,6 +445,18 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Section_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="ProgramId" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="ProgramId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Staff_Person">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
@@ -617,7 +601,7 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DB45ModelStoreContainer">
+  <EntityContainer Name="LMSDbStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -625,83 +609,25 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CalenderMonth" EntityType="Self.CalenderMonth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CourseTeacher" EntityType="Self.CourseTeacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DailyAttendanceStaff" EntityType="Self.DailyAttendanceStaff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DailyAttendanceStudent" EntityType="Self.DailyAttendanceStudent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DateKeeper" EntityType="Self.DateKeeper" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamBySubject" EntityType="Self.ExamBySubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Institute" EntityType="Self.Institute" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MonthlyReports" EntityType="Self.MonthlyReports" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StaffFine" EntityType="Self.StaffFine" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentFine" EntityType="Self.StudentFine" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentSection" EntityType="Self.StudentSection" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CourseTeacher" EntityType="Self.CourseTeacher" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [CourseTeacher].[StaffId] AS [StaffId], 
-    [CourseTeacher].[SubjectId] AS [SubjectId]
-    FROM [dbo].[CourseTeacher] AS [CourseTeacher]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="DailyAttendanceStaff" EntityType="Self.DailyAttendanceStaff" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [DailyAttendanceStaff].[DateId] AS [DateId], 
-    [DailyAttendanceStaff].[StaffId] AS [StaffId], 
-    [DailyAttendanceStaff].[AttendanceStatus] AS [AttendanceStatus]
-    FROM [dbo].[DailyAttendanceStaff] AS [DailyAttendanceStaff]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="DailyAttendanceStudent" EntityType="Self.DailyAttendanceStudent" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [DailyAttendanceStudent].[DateId] AS [DateId], 
-    [DailyAttendanceStudent].[StudentId] AS [StudentId], 
-    [DailyAttendanceStudent].[AttendanceStatus] AS [AttendanceStatus]
-    FROM [dbo].[DailyAttendanceStudent] AS [DailyAttendanceStudent]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="ExamBySubject" EntityType="Self.ExamBySubject" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [ExamBySubject].[ExamId] AS [ExamId], 
-    [ExamBySubject].[SubjectId] AS [SubjectId], 
-    [ExamBySubject].[TotalMarks] AS [TotalMarks], 
-    [ExamBySubject].[StartDateTime] AS [StartDateTime], 
-    [ExamBySubject].[EndTime] AS [EndTime]
-    FROM [dbo].[ExamBySubject] AS [ExamBySubject]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="Institute" EntityType="Self.Institute" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Institute].[Name] AS [Name], 
-    [Institute].[Address] AS [Address], 
-    [Institute].[PhoneNumber] AS [PhoneNumber]
-    FROM [dbo].[Institute] AS [Institute]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="Result" EntityType="Self.Result" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Result].[ExamId] AS [ExamId], 
-    [Result].[SubjectId] AS [SubjectId], 
-    [Result].[StudentId] AS [StudentId], 
-    [Result].[ObtainedMarks] AS [ObtainedMarks]
-    FROM [dbo].[Result] AS [Result]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="StaffFine" EntityType="Self.StaffFine" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [StaffFine].[DateId] AS [DateId], 
-    [StaffFine].[StaffId] AS [StaffId], 
-    [StaffFine].[FineAmount] AS [FineAmount]
-    FROM [dbo].[StaffFine] AS [StaffFine]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="StudentFine" EntityType="Self.StudentFine" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [StudentFine].[DateId] AS [DateId], 
-    [StudentFine].[StudentId] AS [StudentId], 
-    [StudentFine].[FineAmount] AS [FineAmount]
-    FROM [dbo].[StudentFine] AS [StudentFine]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="TimeTable" EntityType="Self.TimeTable" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [TimeTable].[SectionId] AS [SectionId], 
-    [TimeTable].[SubjectId] AS [SubjectId], 
-    [TimeTable].[Day] AS [Day], 
-    [TimeTable].[StartTime] AS [StartTime], 
-    [TimeTable].[EndTime] AS [EndTime]
-    FROM [dbo].[TimeTable] AS [TimeTable]</DefiningQuery>
-    </EntitySet>
+    <EntitySet Name="TimeTable" EntityType="Self.TimeTable" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CourseTeacher_Staff" Association="Self.FK_CourseTeacher_Staff">
       <End Role="Staff" EntitySet="Staff" />
       <End Role="CourseTeacher" EntitySet="CourseTeacher" />
@@ -765,6 +691,10 @@ warning 6002: The table/view 'DB45.dbo.TimeTable' does not have a primary key de
     <AssociationSet Name="FK_Result_Subjects" Association="Self.FK_Result_Subjects">
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Program" Association="Self.FK_Section_Program">
+      <End Role="Program" EntitySet="Program" />
+      <End Role="Section" EntitySet="Section" />
     </AssociationSet>
     <AssociationSet Name="FK_Staff_Person" Association="Self.FK_Staff_Person">
       <End Role="Person" EntitySet="Person" />

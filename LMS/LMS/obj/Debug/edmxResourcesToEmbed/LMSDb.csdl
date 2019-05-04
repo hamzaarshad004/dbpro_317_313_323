@@ -1,5 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DB45Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="LMSDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
   <EntityType Name="CalenderMonth">
     <Key>
       <PropertyRef Name="Id" />
@@ -7,6 +66,28 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Month" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="MonthlyReport" Relationship="Self.FK_MonthlyReports_CalenderMonth" FromRole="CalenderMonth" ToRole="MonthlyReports" />
+  </EntityType>
+  <EntityType Name="DailyAttendanceStaff">
+    <Key>
+      <PropertyRef Name="DateId" />
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="DateId" Type="Int32" Nullable="false" />
+    <Property Name="StaffId" Type="Int32" Nullable="false" />
+    <Property Name="AttendanceStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DateKeeper" Relationship="Self.FK_DailyAttendanceStaff_DateKeeper" FromRole="DailyAttendanceStaff" ToRole="DateKeeper" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_DailyAttendanceStaff_Staff" FromRole="DailyAttendanceStaff" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="DailyAttendanceStudent">
+    <Key>
+      <PropertyRef Name="DateId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="DateId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="AttendanceStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DateKeeper" Relationship="Self.FK_DailyAttendanceStudent_DateKeeper" FromRole="DailyAttendanceStudent" ToRole="DateKeeper" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_DailyAttendanceStudent_Student" FromRole="DailyAttendanceStudent" ToRole="Student" />
   </EntityType>
   <EntityType Name="DateKeeper">
     <Key>
@@ -27,6 +108,27 @@
     <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ExamBySubjects" Relationship="Self.FK_ExamBySubject_Exam" FromRole="Exam" ToRole="ExamBySubject" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Result_Exam" FromRole="Exam" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="ExamBySubject">
+    <Key>
+      <PropertyRef Name="ExamId" />
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="ExamId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <Property Name="TotalMarks" Type="Int32" Nullable="false" />
+    <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Exam" Relationship="Self.FK_ExamBySubject_Exam" FromRole="ExamBySubject" ToRole="Exam" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_ExamBySubject_Subjects" FromRole="ExamBySubject" ToRole="Subjects" />
+  </EntityType>
+  <EntityType Name="Institute">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="MonthlyReport">
     <Key>
@@ -60,8 +162,36 @@
     <Property Name="AdmissionStart" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="AdmissionEnd" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ClassesStart" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Sections" Relationship="Self.FK_Section_Program" FromRole="Program" ToRole="Section" />
     <NavigationProperty Name="Students" Relationship="Self.FK_Student_Program" FromRole="Program" ToRole="Student" />
     <NavigationProperty Name="Subjects" Relationship="Self.FK_Subjects_Program" FromRole="Program" ToRole="Subjects" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ExamId" />
+      <PropertyRef Name="SubjectId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="ExamId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="ObtainedMarks" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Exam" Relationship="Self.FK_Result_Exam" FromRole="Result" ToRole="Exam" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Result_Student" FromRole="Result" ToRole="Student" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Result_Subjects" FromRole="Result" ToRole="Subjects" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="SectionId" />
+    </Key>
+    <Property Name="SectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SectionName" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Batch" Type="Int32" Nullable="false" />
+    <Property Name="TotalStudents" Type="Int32" />
+    <Property Name="ProgramId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Program" Relationship="Self.FK_Section_Program" FromRole="Section" ToRole="Program" />
+    <NavigationProperty Name="TimeTables" Relationship="Self.FK_TimeTable_Section" FromRole="Section" ToRole="TimeTable" />
+    <NavigationProperty Name="Students" Relationship="Self.StudentSection" FromRole="Section" ToRole="Student" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -71,10 +201,21 @@
     <Property Name="Designation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="MonthlySalary" Type="Double" Nullable="false" />
-    <NavigationProperty Name="Person" Relationship="Self.FK_Staff_Person" FromRole="Staff" ToRole="Person" />
     <NavigationProperty Name="DailyAttendanceStaffs" Relationship="Self.FK_DailyAttendanceStaff_Staff" FromRole="Staff" ToRole="DailyAttendanceStaff" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Staff_Person" FromRole="Staff" ToRole="Person" />
     <NavigationProperty Name="StaffFines" Relationship="Self.FK_StaffFine_Staff" FromRole="Staff" ToRole="StaffFine" />
     <NavigationProperty Name="Subjects" Relationship="Self.CourseTeacher" FromRole="Staff" ToRole="Subjects" />
+  </EntityType>
+  <EntityType Name="StaffFine">
+    <Key>
+      <PropertyRef Name="DateId" />
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="DateId" Type="Int32" Nullable="false" />
+    <Property Name="StaffId" Type="Int32" Nullable="false" />
+    <Property Name="FineAmount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DateKeeper" Relationship="Self.FK_StaffFine_DateKeeper" FromRole="StaffFine" ToRole="DateKeeper" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_StaffFine_Staff" FromRole="StaffFine" ToRole="Staff" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -86,12 +227,23 @@
     <Property Name="MonthlyFee" Type="Double" Nullable="false" />
     <Property Name="AdmissionDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ProgramId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DailyAttendanceStudents" Relationship="Self.FK_DailyAttendanceStudent_Student" FromRole="Student" ToRole="DailyAttendanceStudent" />
     <NavigationProperty Name="Person" Relationship="Self.FK_Student_Person" FromRole="Student" ToRole="Person" />
     <NavigationProperty Name="Program" Relationship="Self.FK_Student_Program" FromRole="Student" ToRole="Program" />
-    <NavigationProperty Name="DailyAttendanceStudents" Relationship="Self.FK_DailyAttendanceStudent_Student" FromRole="Student" ToRole="DailyAttendanceStudent" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Result_Student" FromRole="Student" ToRole="Result" />
     <NavigationProperty Name="StudentFines" Relationship="Self.FK_StudentFine_Student" FromRole="Student" ToRole="StudentFine" />
-    <NavigationProperty Name="Sections" Relationship="DB45Model.StudentSection" FromRole="Student" ToRole="Section" />
+    <NavigationProperty Name="Sections" Relationship="Self.StudentSection" FromRole="Student" ToRole="Section" />
+  </EntityType>
+  <EntityType Name="StudentFine">
+    <Key>
+      <PropertyRef Name="DateId" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="DateId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="FineAmount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DateKeeper" Relationship="Self.FK_StudentFine_DateKeeper" FromRole="StudentFine" ToRole="DateKeeper" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_StudentFine_Student" FromRole="StudentFine" ToRole="Student" />
   </EntityType>
   <EntityType Name="Subject">
     <Key>
@@ -100,100 +252,11 @@
     <Property Name="ProgramId" Type="Int32" Nullable="false" />
     <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SubjectName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Program" Relationship="Self.FK_Subjects_Program" FromRole="Subjects" ToRole="Program" />
     <NavigationProperty Name="ExamBySubjects" Relationship="Self.FK_ExamBySubject_Subjects" FromRole="Subjects" ToRole="ExamBySubject" />
+    <NavigationProperty Name="Program" Relationship="Self.FK_Subjects_Program" FromRole="Subjects" ToRole="Program" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Result_Subjects" FromRole="Subjects" ToRole="Result" />
     <NavigationProperty Name="TimeTables" Relationship="Self.FK_TimeTable_Subjects" FromRole="Subjects" ToRole="TimeTable" />
     <NavigationProperty Name="Staffs" Relationship="Self.CourseTeacher" FromRole="Subjects" ToRole="Staff" />
-  </EntityType>
-  <EntityType Name="DailyAttendanceStaff">
-    <Key>
-      <PropertyRef Name="DateId" />
-      <PropertyRef Name="StaffId" />
-      <PropertyRef Name="AttendanceStatus" />
-    </Key>
-    <Property Name="DateId" Type="Int32" Nullable="false" />
-    <Property Name="StaffId" Type="Int32" Nullable="false" />
-    <Property Name="AttendanceStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="DateKeeper" Relationship="Self.FK_DailyAttendanceStaff_DateKeeper" FromRole="DailyAttendanceStaff" ToRole="DateKeeper" />
-    <NavigationProperty Name="Staff" Relationship="Self.FK_DailyAttendanceStaff_Staff" FromRole="DailyAttendanceStaff" ToRole="Staff" />
-  </EntityType>
-  <EntityType Name="DailyAttendanceStudent">
-    <Key>
-      <PropertyRef Name="DateId" />
-      <PropertyRef Name="StudentId" />
-      <PropertyRef Name="AttendanceStatus" />
-    </Key>
-    <Property Name="DateId" Type="Int32" Nullable="false" />
-    <Property Name="StudentId" Type="Int32" Nullable="false" />
-    <Property Name="AttendanceStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="DateKeeper" Relationship="Self.FK_DailyAttendanceStudent_DateKeeper" FromRole="DailyAttendanceStudent" ToRole="DateKeeper" />
-    <NavigationProperty Name="Student" Relationship="Self.FK_DailyAttendanceStudent_Student" FromRole="DailyAttendanceStudent" ToRole="Student" />
-  </EntityType>
-  <EntityType Name="ExamBySubject">
-    <Key>
-      <PropertyRef Name="ExamId" />
-      <PropertyRef Name="SubjectId" />
-      <PropertyRef Name="TotalMarks" />
-      <PropertyRef Name="StartDateTime" />
-      <PropertyRef Name="EndTime" />
-    </Key>
-    <Property Name="ExamId" Type="Int32" Nullable="false" />
-    <Property Name="SubjectId" Type="Int32" Nullable="false" />
-    <Property Name="TotalMarks" Type="Int32" Nullable="false" />
-    <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Exam" Relationship="Self.FK_ExamBySubject_Exam" FromRole="ExamBySubject" ToRole="Exam" />
-    <NavigationProperty Name="Subject" Relationship="Self.FK_ExamBySubject_Subjects" FromRole="ExamBySubject" ToRole="Subjects" />
-  </EntityType>
-  <EntityType Name="Institute">
-    <Key>
-      <PropertyRef Name="Name" />
-      <PropertyRef Name="Address" />
-      <PropertyRef Name="PhoneNumber" />
-    </Key>
-    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Result">
-    <Key>
-      <PropertyRef Name="ExamId" />
-      <PropertyRef Name="SubjectId" />
-      <PropertyRef Name="StudentId" />
-      <PropertyRef Name="ObtainedMarks" />
-    </Key>
-    <Property Name="ExamId" Type="Int32" Nullable="false" />
-    <Property Name="SubjectId" Type="Int32" Nullable="false" />
-    <Property Name="StudentId" Type="Int32" Nullable="false" />
-    <Property Name="ObtainedMarks" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Exam" Relationship="Self.FK_Result_Exam" FromRole="Result" ToRole="Exam" />
-    <NavigationProperty Name="Student" Relationship="Self.FK_Result_Student" FromRole="Result" ToRole="Student" />
-    <NavigationProperty Name="Subject" Relationship="Self.FK_Result_Subjects" FromRole="Result" ToRole="Subjects" />
-  </EntityType>
-  <EntityType Name="StaffFine">
-    <Key>
-      <PropertyRef Name="DateId" />
-      <PropertyRef Name="StaffId" />
-      <PropertyRef Name="FineAmount" />
-    </Key>
-    <Property Name="DateId" Type="Int32" Nullable="false" />
-    <Property Name="StaffId" Type="Int32" Nullable="false" />
-    <Property Name="FineAmount" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="DateKeeper" Relationship="Self.FK_StaffFine_DateKeeper" FromRole="StaffFine" ToRole="DateKeeper" />
-    <NavigationProperty Name="Staff" Relationship="Self.FK_StaffFine_Staff" FromRole="StaffFine" ToRole="Staff" />
-  </EntityType>
-  <EntityType Name="StudentFine">
-    <Key>
-      <PropertyRef Name="DateId" />
-      <PropertyRef Name="StudentId" />
-      <PropertyRef Name="FineAmount" />
-    </Key>
-    <Property Name="DateId" Type="Int32" Nullable="false" />
-    <Property Name="StudentId" Type="Int32" Nullable="false" />
-    <Property Name="FineAmount" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="DateKeeper" Relationship="Self.FK_StudentFine_DateKeeper" FromRole="StudentFine" ToRole="DateKeeper" />
-    <NavigationProperty Name="Student" Relationship="Self.FK_StudentFine_Student" FromRole="StudentFine" ToRole="Student" />
   </EntityType>
   <EntityType Name="TimeTable">
     <Key>
@@ -201,16 +264,43 @@
       <PropertyRef Name="SubjectId" />
       <PropertyRef Name="Day" />
       <PropertyRef Name="StartTime" />
-      <PropertyRef Name="EndTime" />
     </Key>
     <Property Name="SectionId" Type="Int32" Nullable="false" />
     <Property Name="SubjectId" Type="Int32" Nullable="false" />
     <Property Name="Day" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Section" Relationship="Self.FK_TimeTable_Section" FromRole="TimeTable" ToRole="Section" />
     <NavigationProperty Name="Subject" Relationship="Self.FK_TimeTable_Subjects" FromRole="TimeTable" ToRole="Subjects" />
-    <NavigationProperty Name="Section" Relationship="DB45Model.FK_TimeTable_Section" FromRole="TimeTable" ToRole="Section" />
   </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_MonthlyReports_CalenderMonth">
     <End Role="CalenderMonth" Type="Self.CalenderMonth" Multiplicity="1" />
     <End Role="MonthlyReports" Type="Self.MonthlyReport" Multiplicity="0..1" />
@@ -235,6 +325,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DailyAttendanceStaff_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="DailyAttendanceStaff" Type="Self.DailyAttendanceStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="DailyAttendanceStaff">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DailyAttendanceStudent_DateKeeper">
     <End Role="DateKeeper" Type="Self.DateKeeper" Multiplicity="1" />
     <End Role="DailyAttendanceStudent" Type="Self.DailyAttendanceStudent" Multiplicity="*" />
@@ -244,6 +346,18 @@
       </Principal>
       <Dependent Role="DailyAttendanceStudent">
         <PropertyRef Name="DateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DailyAttendanceStudent_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="DailyAttendanceStudent" Type="Self.DailyAttendanceStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="DailyAttendanceStudent">
+        <PropertyRef Name="StudentId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -295,6 +409,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ExamBySubject_Subjects">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+    <End Role="ExamBySubject" Type="Self.ExamBySubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="ExamBySubject">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Staff_Person">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
@@ -316,6 +442,18 @@
       </Principal>
       <Dependent Role="Student">
         <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="ProgramId" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="ProgramId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -343,42 +481,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DailyAttendanceStaff_Staff">
-    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
-    <End Role="DailyAttendanceStaff" Type="Self.DailyAttendanceStaff" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Staff">
-        <PropertyRef Name="StaffId" />
-      </Principal>
-      <Dependent Role="DailyAttendanceStaff">
-        <PropertyRef Name="StaffId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_StaffFine_Staff">
-    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
-    <End Role="StaffFine" Type="Self.StaffFine" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Staff">
-        <PropertyRef Name="StaffId" />
-      </Principal>
-      <Dependent Role="StaffFine">
-        <PropertyRef Name="StaffId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DailyAttendanceStudent_Student">
-    <End Role="Student" Type="Self.Student" Multiplicity="1" />
-    <End Role="DailyAttendanceStudent" Type="Self.DailyAttendanceStudent" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Student">
-        <PropertyRef Name="StudentId" />
-      </Principal>
-      <Dependent Role="DailyAttendanceStudent">
-        <PropertyRef Name="StudentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Result_Student">
     <End Role="Student" Type="Self.Student" Multiplicity="1" />
     <End Role="Result" Type="Self.Result" Multiplicity="*" />
@@ -388,30 +490,6 @@
       </Principal>
       <Dependent Role="Result">
         <PropertyRef Name="StudentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_StudentFine_Student">
-    <End Role="Student" Type="Self.Student" Multiplicity="1" />
-    <End Role="StudentFine" Type="Self.StudentFine" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Student">
-        <PropertyRef Name="StudentId" />
-      </Principal>
-      <Dependent Role="StudentFine">
-        <PropertyRef Name="StudentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ExamBySubject_Subjects">
-    <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
-    <End Role="ExamBySubject" Type="Self.ExamBySubject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subjects">
-        <PropertyRef Name="SubjectId" />
-      </Principal>
-      <Dependent Role="ExamBySubject">
-        <PropertyRef Name="SubjectId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -427,6 +505,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TimeTable_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionId" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StaffFine_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="StaffFine" Type="Self.StaffFine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="StaffFine">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentFine_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentFine" Type="Self.StudentFine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentFine">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TimeTable_Subjects">
     <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
     <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
@@ -439,28 +553,50 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
   <Association Name="CourseTeacher">
     <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
     <End Role="Subjects" Type="Self.Subject" Multiplicity="*" />
   </Association>
+  <Association Name="StudentSection">
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="DB45Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
     <EntitySet Name="CalenderMonths" EntityType="Self.CalenderMonth" />
+    <EntitySet Name="DailyAttendanceStaffs" EntityType="Self.DailyAttendanceStaff" />
+    <EntitySet Name="DailyAttendanceStudents" EntityType="Self.DailyAttendanceStudent" />
     <EntitySet Name="DateKeepers" EntityType="Self.DateKeeper" />
     <EntitySet Name="Exams" EntityType="Self.Exam" />
+    <EntitySet Name="ExamBySubjects" EntityType="Self.ExamBySubject" />
+    <EntitySet Name="Institutes" EntityType="Self.Institute" />
     <EntitySet Name="MonthlyReports" EntityType="Self.MonthlyReport" />
     <EntitySet Name="People" EntityType="Self.Person" />
     <EntitySet Name="Programs" EntityType="Self.Program" />
-    <EntitySet Name="Staffs" EntityType="Self.Staff" />
-    <EntitySet Name="Students" EntityType="Self.Student" />
-    <EntitySet Name="Subjects" EntityType="Self.Subject" />
-    <EntitySet Name="DailyAttendanceStaffs" EntityType="Self.DailyAttendanceStaff" />
-    <EntitySet Name="DailyAttendanceStudents" EntityType="Self.DailyAttendanceStudent" />
-    <EntitySet Name="ExamBySubjects" EntityType="Self.ExamBySubject" />
-    <EntitySet Name="Institutes" EntityType="Self.Institute" />
     <EntitySet Name="Results" EntityType="Self.Result" />
+    <EntitySet Name="Sections" EntityType="Self.Section" />
+    <EntitySet Name="Staffs" EntityType="Self.Staff" />
     <EntitySet Name="StaffFines" EntityType="Self.StaffFine" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="StudentFines" EntityType="Self.StudentFine" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
     <EntitySet Name="TimeTables" EntityType="Self.TimeTable" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
     <AssociationSet Name="FK_MonthlyReports_CalenderMonth" Association="Self.FK_MonthlyReports_CalenderMonth">
       <End Role="CalenderMonth" EntitySet="CalenderMonths" />
       <End Role="MonthlyReports" EntitySet="MonthlyReports" />
@@ -469,8 +605,16 @@
       <End Role="DateKeeper" EntitySet="DateKeepers" />
       <End Role="DailyAttendanceStaff" EntitySet="DailyAttendanceStaffs" />
     </AssociationSet>
+    <AssociationSet Name="FK_DailyAttendanceStaff_Staff" Association="Self.FK_DailyAttendanceStaff_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="DailyAttendanceStaff" EntitySet="DailyAttendanceStaffs" />
+    </AssociationSet>
     <AssociationSet Name="FK_DailyAttendanceStudent_DateKeeper" Association="Self.FK_DailyAttendanceStudent_DateKeeper">
       <End Role="DateKeeper" EntitySet="DateKeepers" />
+      <End Role="DailyAttendanceStudent" EntitySet="DailyAttendanceStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DailyAttendanceStudent_Student" Association="Self.FK_DailyAttendanceStudent_Student">
+      <End Role="Student" EntitySet="Students" />
       <End Role="DailyAttendanceStudent" EntitySet="DailyAttendanceStudents" />
     </AssociationSet>
     <AssociationSet Name="FK_StaffFine_DateKeeper" Association="Self.FK_StaffFine_DateKeeper">
@@ -489,6 +633,10 @@
       <End Role="Exam" EntitySet="Exams" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
+    <AssociationSet Name="FK_ExamBySubject_Subjects" Association="Self.FK_ExamBySubject_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="ExamBySubject" EntitySet="ExamBySubjects" />
+    </AssociationSet>
     <AssociationSet Name="FK_Staff_Person" Association="Self.FK_Staff_Person">
       <End Role="Person" EntitySet="People" />
       <End Role="Staff" EntitySet="Staffs" />
@@ -496,6 +644,10 @@
     <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
       <End Role="Person" EntitySet="People" />
       <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Program" Association="Self.FK_Section_Program">
+      <End Role="Program" EntitySet="Programs" />
+      <End Role="Section" EntitySet="Sections" />
     </AssociationSet>
     <AssociationSet Name="FK_Student_Program" Association="Self.FK_Student_Program">
       <End Role="Program" EntitySet="Programs" />
@@ -505,185 +657,41 @@
       <End Role="Program" EntitySet="Programs" />
       <End Role="Subjects" EntitySet="Subjects" />
     </AssociationSet>
-    <AssociationSet Name="FK_DailyAttendanceStaff_Staff" Association="Self.FK_DailyAttendanceStaff_Staff">
-      <End Role="Staff" EntitySet="Staffs" />
-      <End Role="DailyAttendanceStaff" EntitySet="DailyAttendanceStaffs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StaffFine_Staff" Association="Self.FK_StaffFine_Staff">
-      <End Role="Staff" EntitySet="Staffs" />
-      <End Role="StaffFine" EntitySet="StaffFines" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DailyAttendanceStudent_Student" Association="Self.FK_DailyAttendanceStudent_Student">
-      <End Role="Student" EntitySet="Students" />
-      <End Role="DailyAttendanceStudent" EntitySet="DailyAttendanceStudents" />
-    </AssociationSet>
     <AssociationSet Name="FK_Result_Student" Association="Self.FK_Result_Student">
       <End Role="Student" EntitySet="Students" />
       <End Role="Result" EntitySet="Results" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StudentFine_Student" Association="Self.FK_StudentFine_Student">
-      <End Role="Student" EntitySet="Students" />
-      <End Role="StudentFine" EntitySet="StudentFines" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ExamBySubject_Subjects" Association="Self.FK_ExamBySubject_Subjects">
-      <End Role="Subjects" EntitySet="Subjects" />
-      <End Role="ExamBySubject" EntitySet="ExamBySubjects" />
     </AssociationSet>
     <AssociationSet Name="FK_Result_Subjects" Association="Self.FK_Result_Subjects">
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
+    <AssociationSet Name="FK_TimeTable_Section" Association="Self.FK_TimeTable_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="TimeTable" EntitySet="TimeTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StaffFine_Staff" Association="Self.FK_StaffFine_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="StaffFine" EntitySet="StaffFines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentFine_Student" Association="Self.FK_StudentFine_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentFine" EntitySet="StudentFines" />
+    </AssociationSet>
     <AssociationSet Name="FK_TimeTable_Subjects" Association="Self.FK_TimeTable_Subjects">
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="TimeTable" EntitySet="TimeTables" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
     <AssociationSet Name="CourseTeacher" Association="Self.CourseTeacher">
       <End Role="Staff" EntitySet="Staffs" />
       <End Role="Subjects" EntitySet="Subjects" />
     </AssociationSet>
-    <EntitySet Name="C__MigrationHistory" EntityType="DB45Model.C__MigrationHistory" />
-    <EntitySet Name="AspNetRoles" EntityType="DB45Model.AspNetRole" />
-    <EntitySet Name="AspNetUserClaims" EntityType="DB45Model.AspNetUserClaim" />
-    <EntitySet Name="AspNetUserLogins" EntityType="DB45Model.AspNetUserLogin" />
-    <EntitySet Name="AspNetUsers" EntityType="DB45Model.AspNetUser" />
-    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DB45Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DB45Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-    </AssociationSet>
-    <AssociationSet Name="AspNetUserRoles" Association="DB45Model.AspNetUserRoles">
-      <End Role="AspNetRole" EntitySet="AspNetRoles" />
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-    </AssociationSet>
-    <EntitySet Name="Sections" EntityType="DB45Model.Section" />
-    <AssociationSet Name="FK_TimeTable_Section" Association="DB45Model.FK_TimeTable_Section">
-      <End Role="Section" EntitySet="Sections" />
-      <End Role="TimeTable" EntitySet="TimeTables" />
-    </AssociationSet>
-    <AssociationSet Name="StudentSection" Association="DB45Model.StudentSection">
+    <AssociationSet Name="StudentSection" Association="Self.StudentSection">
       <End Role="Section" EntitySet="Sections" />
       <End Role="Student" EntitySet="Students" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="C__MigrationHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-      <PropertyRef Name="ContextKey" />
-    </Key>
-    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="AspNetRole">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUsers" Relationship="DB45Model.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
-  </EntityType>
-  <EntityType Name="AspNetUserClaim">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUser" Relationship="DB45Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
-  </EntityType>
-  <EntityType Name="AspNetUserLogin">
-    <Key>
-      <PropertyRef Name="LoginProvider" />
-      <PropertyRef Name="ProviderKey" />
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUser" Relationship="DB45Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
-  </EntityType>
-  <EntityType Name="AspNetUser">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUserClaims" Relationship="DB45Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
-    <NavigationProperty Name="AspNetUserLogins" Relationship="DB45Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-    <NavigationProperty Name="AspNetRoles" Relationship="DB45Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
-  </EntityType>
-  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-    <End Type="DB45Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="DB45Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUser">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AspNetUserClaim">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-    <End Type="DB45Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="DB45Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUser">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AspNetUserLogin">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AspNetUserRoles">
-    <End Type="DB45Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-    <End Type="DB45Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-  </Association>
-  <EntityType Name="Section">
-    <Key>
-      <PropertyRef Name="SectionId" />
-    </Key>
-    <Property Name="SectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SectionName" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-    <Property Name="Batch" Type="Int32" Nullable="false" />
-    <Property Name="TotalStudents" Type="Int32" />
-    <NavigationProperty Name="TimeTables" Relationship="DB45Model.FK_TimeTable_Section" FromRole="Section" ToRole="TimeTable" />
-    <NavigationProperty Name="Students" Relationship="DB45Model.StudentSection" FromRole="Section" ToRole="Student" />
-  </EntityType>
-  <Association Name="FK_TimeTable_Section">
-    <End Type="DB45Model.Section" Role="Section" Multiplicity="1" />
-    <End Type="DB45Model.TimeTable" Role="TimeTable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Section">
-        <PropertyRef Name="SectionId" />
-      </Principal>
-      <Dependent Role="TimeTable">
-        <PropertyRef Name="SectionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="StudentSection">
-    <End Type="DB45Model.Section" Role="Section" Multiplicity="*" />
-    <End Type="DB45Model.Student" Role="Student" Multiplicity="*" />
-  </Association>
 </Schema>

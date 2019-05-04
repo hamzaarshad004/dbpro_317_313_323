@@ -20,7 +20,7 @@ namespace LMS
         public System.DateTime StartTime { get; set; }
         public System.DateTime EndTime { get; set; }
     
-        public virtual Subject Subject { get; set; }
         public virtual Section Section { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

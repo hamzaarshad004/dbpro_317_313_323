@@ -17,6 +17,7 @@ namespace LMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Program()
         {
+            this.Sections = new HashSet<Section>();
             this.Students = new HashSet<Student>();
             this.Subjects = new HashSet<Subject>();
         }
@@ -27,6 +28,8 @@ namespace LMS
         public System.DateTime AdmissionEnd { get; set; }
         public System.DateTime ClassesStart { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Section> Sections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

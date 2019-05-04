@@ -4,55 +4,56 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6bc052c110804d32a9ade58bffc0b7e4" Name="Diagram1" ZoomLevel="67">
-        <EntityTypeShape EntityType="DB45Model.CalenderMonth" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.DateKeeper" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Exam" Width="1.5" PointX="8.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.MonthlyReport" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Person" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Program" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Staff" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Student" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Subject" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.DailyAttendanceStaff" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.DailyAttendanceStudent" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.ExamBySubject" Width="1.5" PointX="7.5" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Institute" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.Result" Width="1.5" PointX="10.5" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.StaffFine" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.StudentFine" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB45Model.TimeTable" Width="1.5" PointX="10.5" PointY="16" IsExpanded="true" />
-        <AssociationConnector Association="DB45Model.FK_MonthlyReports_CalenderMonth" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_DailyAttendanceStaff_DateKeeper" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_DailyAttendanceStudent_DateKeeper" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_StaffFine_DateKeeper" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_StudentFine_DateKeeper" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_ExamBySubject_Exam" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_Result_Exam" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_Staff_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_Student_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_Student_Program" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_Subjects_Program" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_DailyAttendanceStaff_Staff" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_StaffFine_Staff" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_DailyAttendanceStudent_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_Result_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_StudentFine_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_ExamBySubject_Subjects" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_Result_Subjects" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.FK_TimeTable_Subjects" ManuallyRouted="false" />
-        <AssociationConnector Association="DB45Model.CourseTeacher" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DB45Model.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="6.75" />
-        <EntityTypeShape EntityType="DB45Model.AspNetRole" Width="1.5" PointX="10.375" PointY="2.5" />
-        <EntityTypeShape EntityType="DB45Model.AspNetUserClaim" Width="1.5" PointX="14.875" PointY="3.625" />
-        <EntityTypeShape EntityType="DB45Model.AspNetUserLogin" Width="1.5" PointX="14.875" PointY="1" />
-        <EntityTypeShape EntityType="DB45Model.AspNetUser" Width="1.5" PointX="12.625" PointY="1.375" />
-        <AssociationConnector Association="DB45Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="DB45Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="DB45Model.AspNetUserRoles" />
-        <EntityTypeShape EntityType="DB45Model.Section" Width="1.5" PointX="2.25" PointY="15.25" />
-        <AssociationConnector Association="DB45Model.FK_TimeTable_Section" />
-        <AssociationConnector Association="DB45Model.StudentSection" />
+      <Diagram DiagramId="416390840c5a4c909c06a41dc1f7d81d" Name="Diagram1">
+        <EntityTypeShape EntityType="LMSDb.C__MigrationHistory" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.AspNetRole" Width="1.5" PointX="10.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.AspNetUserClaim" Width="1.5" PointX="15.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.AspNetUserLogin" Width="1.5" PointX="15.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.AspNetUser" Width="1.5" PointX="13" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.CalenderMonth" Width="1.5" PointX="9.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.DailyAttendanceStaff" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.DailyAttendanceStudent" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.DateKeeper" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Exam" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.ExamBySubject" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Institute" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.MonthlyReport" Width="1.5" PointX="12" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Person" Width="1.5" PointX="1.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Program" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Result" Width="1.5" PointX="10.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Section" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Staff" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.StaffFine" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Student" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.StudentFine" Width="1.5" PointX="7.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.Subject" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSDb.TimeTable" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="LMSDb.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_MonthlyReports_CalenderMonth" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_DailyAttendanceStaff_DateKeeper" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_DailyAttendanceStaff_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_DailyAttendanceStudent_DateKeeper" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_DailyAttendanceStudent_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_StaffFine_DateKeeper" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_StudentFine_DateKeeper" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_ExamBySubject_Exam" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_Result_Exam" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_ExamBySubject_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_Staff_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_Student_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_Section_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_Student_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_Subjects_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_Result_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_Result_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_TimeTable_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_StaffFine_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_StudentFine_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.FK_TimeTable_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.CourseTeacher" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSDb.StudentSection" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -24,5 +24,18 @@ namespace LMS.Models
         public string Designation { get; set; }
         public System.DateTime HireDate { get; set; }
         public double MonthlySalary { get; set; }
+
+        
+    }
+
+    public class StaffAttendanceModel
+    {
+        public System.DateTime SelectedDate { get; set; }
+        public List<CheckBoxListItemStaff> Staffs { get; set; }
+
+        public StaffAttendanceModel()
+        {
+            Staffs = new List<CheckBoxListItemStaff>();
+        }
     }
 }

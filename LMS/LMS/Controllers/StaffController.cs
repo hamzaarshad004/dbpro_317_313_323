@@ -239,5 +239,91 @@ namespace LMS.Controllers
                 return View();
             }
         }
+
+        public ActionResult StaffAttendance()
+        {
+            StaffAttendanceModel model = new StaffAttendanceModel();
+            DB45Entities db = new DB45Entities();
+            var getData = db.People.Join(db.Staffs, p => p.PersonId, s => s.StaffId, (p, s) => new { Id = s.StaffId, Name = p.Name, Designation = s.Designation }).ToList();
+            List<CheckBoxListItemStaff> StaffView = new List<CheckBoxListItemStaff>();
+            foreach(var g in getData)
+            {
+                StaffView.Add(new CheckBoxListItemStaff()
+                {
+                    ID = g.Id,
+                    Display = g.Name,
+                    DisplayDesignation = g.Designation,
+                    IsChecked = false
+                });
+            }
+            model.Staffs = StaffView;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult StaffAttendance(StaffAttendanceModel model)
+        {
+            int CurrentId = checkDateInDb(model.SelectedDate);
+            var Staffs = model.Staffs;
+
+            DB45Entities db = new DB45Entities();
+
+            foreach (var S in Staffs)
+            {
+                var checkMarked = db.DailyAttendanceStudents.Where(c => c.StudentId == S.ID && c.DateId == CurrentId).FirstOrDefault();
+                if (checkMarked != null)
+                {
+                    if (S.IsChecked)
+                    {
+                        checkMarked.AttendanceStatus = "Present";
+                    }
+                    else
+                    {
+                        checkMarked.AttendanceStatus = "Absent";
+                    }
+                    db.SaveChanges();
+                }
+                else
+                {
+                    DailyAttendanceStaff attendanceStaff = new DailyAttendanceStaff();
+                    attendanceStaff.DateId = CurrentId;
+                    attendanceStaff.StaffId = S.ID;
+                    if (S.IsChecked)
+                    {
+                        attendanceStaff.AttendanceStatus = "Present";
+                    }
+                    else
+                    {
+                        attendanceStaff.AttendanceStatus = "Absent";
+                    }
+                    db.DailyAttendanceStaffs.Add(attendanceStaff);
+                }
+
+
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        int checkDateInDb(System.DateTime currentDate)
+        {
+            DB45Entities db = new DB45Entities();
+            var check = db.DateKeepers.FirstOrDefault(c => c.CurrentDate == currentDate);
+            if (check != null)
+            {
+                return check.Id;
+            }
+            else
+            {
+                DateKeeper date = new DateKeeper();
+                date.CurrentDate = currentDate;
+                db.DateKeepers.Add(date);
+                db.SaveChanges();
+
+                return date.Id;
+            }
+
+        }
     }
 }
