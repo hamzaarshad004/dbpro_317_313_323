@@ -48,5 +48,6 @@ namespace LMS
         public virtual DbSet<StudentFine> StudentFines { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<TimeTable> TimeTables { get; set; }
+        public virtual DbSet<StudentSubject> StudentSubjects { get; set; }
     }
 }

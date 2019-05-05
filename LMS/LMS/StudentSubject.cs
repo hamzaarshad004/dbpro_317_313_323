@@ -12,16 +12,9 @@ namespace LMS
     using System;
     using System.Collections.Generic;
     
-    public partial class TimeTable
+    public partial class StudentSubject
     {
-        public int SectionId { get; set; }
+        public int StudentId { get; set; }
         public int SubjectId { get; set; }
-        public string Day { get; set; }
-        public System.DateTime StartTime { get; set; }
-        public System.DateTime EndTime { get; set; }
-        public int timetableId { get; set; }
-    
-        public virtual Section Section { get; set; }
-        public virtual Subject Subject { get; set; }
     }
 }
