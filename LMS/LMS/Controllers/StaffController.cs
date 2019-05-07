@@ -240,6 +240,97 @@ namespace LMS.Controllers
             }
         }
 
+        public ActionResult StaffSubject(int id)
+        {
+            try
+            {
+                var db = new DB45Entities();
+                var data = db.Staffs.First(x => x.StaffId == id);
+                CourseTeacherViewModel ctvm = new CourseTeacherViewModel();
+                if ((data.Designation == "Lecturer" || data.Designation == "Professor" || data.Designation == "Assistant Professor" || data.Designation == "Associate Professor" || data.Designation == "Industrial"))
+                {
+                    //var c = db.Staffs.Where(x => x.StaffId == id && (x.Designation == "Lecturer" || x.Designation == "Professor" || x.Designation == "Assistant Professor" || x.Designation == "Associate Professor" || x.Designation == "Industrial"));
+
+
+                    ctvm.StaffId = data.StaffId;
+
+                    var sbj = db.Subjects.ToList();
+                    ctvm.allsubjects = sbj;
+                    SubjectList staffsubjectlist = new SubjectList();
+                    staffsubjectlist.Subjects = db.Subjects;
+                    //data.Subjects.Add();
+                }
+                //else
+                //{
+                //    TempData["msg"] = "<script>alert('Subjects Can only be added for teachers');</script>";
+                //}
+
+                return View("StaffSubject", ctvm);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Invalid  Entry');</script>";
+                return View("Index");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult StaffSubject(int id , SubjectList stsl)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                var db = new DB45Entities();
+
+                var s = db.Subjects.Where(c=>c.SubjectId == stsl.SubjectId);
+               
+
+
+                //SubjectList sa = new SubjectList();
+                //sa.SubjectId = ctvm.SubjectId;
+
+
+                //var S = db.Sections.Where(c => c.SectionId == model.SectionId).First();
+                //S.TotalStudents = S.TotalStudents + 1;
+                //S.Students.Add(db.Students.Where(c => c.StudentId == id).First());
+
+                //db.SaveChanges();
+                //StudentSubject asss = new StudentSubject();
+                //asss.StudentId = assign.StudentId;
+                //asss.SubjectId = assign.SubjectId;
+                //db.StudentSubjects.Add(asss);
+                //db.SaveChanges();
+
+
+
+                return RedirectToAction("Index");
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (DbEntityValidationResult item in ex.EntityValidationErrors)
+                {
+                    // Get entry
+
+                    DbEntityEntry entry = item.Entry;
+                    string entityTypeName = entry.Entity.GetType().Name;
+
+                    // Display or log error messages
+
+                    foreach (DbValidationError subItem in item.ValidationErrors)
+                    {
+                        string message = string.Format("Error '{0}' occurred in {1} at {2}",
+                                 subItem.ErrorMessage, entityTypeName, subItem.PropertyName);
+                        Console.WriteLine(message);
+                    }
+                }
+
+                return View("AddStaff");
+            }
+        }
+
+
+
         public ActionResult StaffAttendance()
         {
             StaffAttendanceModel model = new StaffAttendanceModel();

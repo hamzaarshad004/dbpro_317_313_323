@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LMSDb.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LMSDb.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -760,7 +760,8 @@
             <End Role="TimeTable" EntitySet="TimeTable" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LMSDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1009,6 +1010,14 @@
           <NavigationProperty Name="DateKeeper" Relationship="Self.FK_StudentFine_DateKeeper" FromRole="StudentFine" ToRole="DateKeeper" />
           <NavigationProperty Name="Student" Relationship="Self.FK_StudentFine_Student" FromRole="StudentFine" ToRole="Student" />
         </EntityType>
+        <EntityType Name="StudentSubject">
+          <Key>
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Subject">
           <Key>
             <PropertyRef Name="SubjectId" />
@@ -1034,9 +1043,9 @@
           <Property Name="Day" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="timetableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Section" Relationship="Self.FK_TimeTable_Section" FromRole="TimeTable" ToRole="Section" />
           <NavigationProperty Name="Subject" Relationship="Self.FK_TimeTable_Subjects" FromRole="TimeTable" ToRole="Subjects" />
-          <Property Name="timetableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -1352,6 +1361,7 @@
           <EntitySet Name="StaffFines" EntityType="Self.StaffFine" />
           <EntitySet Name="Students" EntityType="Self.Student" />
           <EntitySet Name="StudentFines" EntityType="Self.StudentFine" />
+          <EntitySet Name="StudentSubjects" EntityType="Self.StudentSubject" />
           <EntitySet Name="Subjects" EntityType="Self.Subject" />
           <EntitySet Name="TimeTables" EntityType="Self.TimeTable" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -1458,16 +1468,7 @@
             <End Role="Section" EntitySet="Sections" />
             <End Role="Student" EntitySet="Students" />
           </AssociationSet>
-          <EntitySet Name="StudentSubjects" EntityType="LMSDb.StudentSubject" />
         </EntityContainer>
-        <EntityType Name="StudentSubject">
-          <Key>
-            <PropertyRef Name="StudentId" />
-            <PropertyRef Name="SubjectId" />
-          </Key>
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="SubjectId" Type="Int32" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1685,6 +1686,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="StudentSubjects">
+            <EntityTypeMapping TypeName="LMSDb.StudentSubject">
+              <MappingFragment StoreEntitySet="StudentSubjects">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Subjects">
             <EntityTypeMapping TypeName="LMSDb.Subject">
               <MappingFragment StoreEntitySet="Subjects">
@@ -1697,12 +1706,12 @@
           <EntitySetMapping Name="TimeTables">
             <EntityTypeMapping TypeName="LMSDb.TimeTable">
               <MappingFragment StoreEntitySet="TimeTable">
-                <ScalarProperty Name="timetableId" ColumnName="timetableId" />
                 <ScalarProperty Name="SectionId" ColumnName="SectionId" />
                 <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="timetableId" ColumnName="timetableId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1730,14 +1739,6 @@
               <ScalarProperty Name="StudentId" ColumnName="StudentId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="StudentSubjects">
-            <EntityTypeMapping TypeName="LMSDb.StudentSubject">
-              <MappingFragment StoreEntitySet="StudentSubjects">
-                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

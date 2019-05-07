@@ -67,6 +67,15 @@ namespace LMS.Controllers
                 student.ProgramId = S.programId;
 
             }
+            //sam.ProgramId = d.ProgramId;
+            //var c = db.Subjects.Where(x => x.ProgramId == student.ProgramId);
+            //foreach(var m in c)
+            //{
+            //    student.ProgramId = m.ProgramId;
+            //    student.allsubjects = c;
+
+            //}
+            
 
             return View(student);
         }
@@ -183,6 +192,95 @@ namespace LMS.Controllers
                 return View("EditStudent");
             }
         }
+
+
+        public ActionResult AddSubject(int id)
+        {
+            var d = db.Students.First(x => x.StudentId == id );
+            
+            SubjectAssignModel sam = new SubjectAssignModel();
+            sam.StudentId = d.StudentId;
+            sam.ProgramId = d.ProgramId;
+            var c = db.Subjects.Where(x => x.ProgramId == sam.ProgramId).ToList();
+
+            sam.allsubjects = c;
+            //var d = db.Subjects.First(x => x.SubjectId == id);
+            //SubjectViewModel svm = new SubjectViewModel();
+            //svm.SubjectId = d.SubjectId;
+            //svm.ProgramId = d.ProgramId;
+            //svm.SubjectName = d.SubjectName;
+
+            return View("AddSubject", sam);
+            //return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddSubject(SubjectAssignModel assign)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                //SubjectAssignModel a = new SubjectAssignModel();
+                StudentSubject asss = new StudentSubject();
+                asss.StudentId = assign.StudentId;
+                asss.SubjectId = assign.SubjectId;
+                db.StudentSubjects.Add(asss);
+                db.SaveChanges();
+
+
+
+                
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult ViewSubjects(int id)
+        {
+            var SubjectsStudent = db.StudentSubjects.Where(c => c.StudentId == id).ToList();
+            List<Subject> subjects = new List<Subject>();
+            var getAllData = (from s in db.StudentSubjects
+                              join sub in db.Subjects
+                              on s.SubjectId equals sub.SubjectId
+                              where s.StudentId == id select new
+                              {
+                                  subjectname = sub.SubjectName,
+                                  subId = sub.SubjectId
+                         
+                              });
+            
+            foreach (var g in getAllData)
+            {
+                Subject s = new Subject();
+                s.SubjectId = g.subId;
+                s.SubjectName = g.subjectname;
+
+                subjects.Add(s);
+            }
+
+            StudentViewModel model = new StudentViewModel();
+            model.allsubjects = subjects;
+            model.StudentId = id;
+
+            //sam.allsubjects = c;
+
+            return View("ViewSubjects", model);
+        }
+
+
+        public ActionResult DeleteStudentSubjects(int StudentId, int SubjectId)
+        {
+            //Subject s = db.Subjects.Find(id);
+            StudentSubject ss = db.StudentSubjects.Where(c => c.StudentId == StudentId && c.SubjectId == SubjectId).FirstOrDefault();
+            db.StudentSubjects.Remove(ss);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
         // GET: Student/Delete/5
         public ActionResult Delete(int id)

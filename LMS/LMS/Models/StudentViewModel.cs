@@ -12,6 +12,7 @@ namespace LMS.Models
         public int PersonId { get; set; }
         public string Name { get; set; }
         public string FatherName { get; set; }
+        
         public string Cnic { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
@@ -23,11 +24,15 @@ namespace LMS.Models
         public double MonthlyFee { get; set; }
         public System.DateTime AdmissionDate { get; set; }
         public int ProgramId { get; set; }
+        public int SubjectId { get; set; }
 
         [DisplayName("Degree Program")]
         public IEnumerable<Program> Programs { get; set; }
 
+        public IEnumerable<Subject> allsubjects { get; set; }
+
         public int SectionAssigned { get; set; }
+
 
         public int checkAssigned(int id)
         {

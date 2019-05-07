@@ -212,6 +212,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="StudentSubjects">
+      <EntityTypeMapping TypeName="LMSDb.StudentSubject">
+        <MappingFragment StoreEntitySet="StudentSubjects">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Subjects">
       <EntityTypeMapping TypeName="LMSDb.Subject">
         <MappingFragment StoreEntitySet="Subjects">
@@ -229,6 +237,7 @@
           <ScalarProperty Name="Day" ColumnName="Day" />
           <ScalarProperty Name="StartTime" ColumnName="StartTime" />
           <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="timetableId" ColumnName="timetableId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

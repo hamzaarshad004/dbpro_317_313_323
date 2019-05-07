@@ -245,6 +245,14 @@
     <NavigationProperty Name="DateKeeper" Relationship="Self.FK_StudentFine_DateKeeper" FromRole="StudentFine" ToRole="DateKeeper" />
     <NavigationProperty Name="Student" Relationship="Self.FK_StudentFine_Student" FromRole="StudentFine" ToRole="Student" />
   </EntityType>
+  <EntityType Name="StudentSubject">
+    <Key>
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="Subject">
     <Key>
       <PropertyRef Name="SubjectId" />
@@ -270,6 +278,7 @@
     <Property Name="Day" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="timetableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Section" Relationship="Self.FK_TimeTable_Section" FromRole="TimeTable" ToRole="Section" />
     <NavigationProperty Name="Subject" Relationship="Self.FK_TimeTable_Subjects" FromRole="TimeTable" ToRole="Subjects" />
   </EntityType>
@@ -587,6 +596,7 @@
     <EntitySet Name="StaffFines" EntityType="Self.StaffFine" />
     <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="StudentFines" EntityType="Self.StudentFine" />
+    <EntitySet Name="StudentSubjects" EntityType="Self.StudentSubject" />
     <EntitySet Name="Subjects" EntityType="Self.Subject" />
     <EntitySet Name="TimeTables" EntityType="Self.TimeTable" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">

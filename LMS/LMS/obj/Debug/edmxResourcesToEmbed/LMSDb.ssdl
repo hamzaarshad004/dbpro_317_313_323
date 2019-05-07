@@ -224,6 +224,14 @@
     <Property Name="SectionId" Type="int" Nullable="false" />
     <Property Name="StudentId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="StudentSubjects">
+    <Key>
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Subjects">
     <Key>
       <PropertyRef Name="SubjectId" />
@@ -244,6 +252,7 @@
     <Property Name="Day" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="StartTime" Type="datetime" Nullable="false" />
     <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="timetableId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <Association Name="FK_CourseTeacher_Staff">
     <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
@@ -626,6 +635,7 @@
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentFine" EntityType="Self.StudentFine" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentSection" EntityType="Self.StudentSection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentSubjects" EntityType="Self.StudentSubjects" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimeTable" EntityType="Self.TimeTable" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CourseTeacher_Staff" Association="Self.FK_CourseTeacher_Staff">

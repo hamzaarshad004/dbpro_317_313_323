@@ -241,12 +241,14 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CheckBoxListItem.cs" />
     <Compile Include="Models\DateKeeperViewModel.cs" />
+    <Compile Include="Models\ExamViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProgramViewModel.cs" />
     <Compile Include="Models\SectionViewModel.cs" />
     <Compile Include="Models\StaffViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
+    <Compile Include="Models\SubjectAssignModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
     <Compile Include="Models\TimeTableViewModel.cs" />
     <Compile Include="MonthlyReport.cs">
@@ -276,6 +278,9 @@
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentFine.cs">
+      <DependentUpon>LMSDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentSubject.cs">
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Subject.cs">
@@ -391,6 +396,10 @@
     <Content Include="Views\TimeTable\TimeTableDetails.cshtml" />
     <Content Include="Views\TimeTable\DeleteTimeTable.cshtml" />
     <Content Include="Views\TimeTable\EditTimeTable.cshtml" />
+    <Content Include="Views\StudentSubject\Create.cshtml" />
+    <Content Include="Views\Student\AddSubject.cshtml" />
+    <Content Include="Views\Student\ViewSubjects.cshtml" />
+    <Content Include="Views\Staff\StaffSubject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

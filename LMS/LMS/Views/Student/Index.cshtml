@@ -50,8 +50,9 @@
             @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
             @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.PersonId }) |
+            @Html.ActionLink("AddSubject", "AddSubject", new { id = item.PersonId }) |
             @if (item.SectionAssigned == 0)
-            { 
+            {
 
                 @Html.ActionLink("Assign Section", "AssignSection", new { id = item.PersonId })
             }

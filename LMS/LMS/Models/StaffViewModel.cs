@@ -26,6 +26,15 @@ namespace LMS.Models
         public double MonthlySalary { get; set; }
 
         
+
+        
+    }
+    public class SubjectList
+    {
+        public int SubjectId { get; set; }
+
+        [DisplayName("Subjects: ")]
+        public IEnumerable<Subject> Subjects { get; set; }
     }
 
     public class StaffAttendanceModel
