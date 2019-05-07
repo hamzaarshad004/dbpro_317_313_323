@@ -32,11 +32,11 @@ namespace LMS.Models
     public class SubjectList
     {
         public int SubjectId { get; set; }
+        public int StaffId;
 
         [DisplayName("Subjects: ")]
         public IEnumerable<Subject> Subjects { get; set; }
     }
-
     public class StaffAttendanceModel
     {
         public System.DateTime SelectedDate { get; set; }

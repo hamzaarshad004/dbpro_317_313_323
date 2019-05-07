@@ -1,44 +1,43 @@
-﻿@model LMS.Models.StaffViewModel
+﻿@model LMS.Models.SubjectList
 
 @{
     ViewBag.Title = "ViewStaffSubjects";
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 
-    //var list = Model.allsubjects;
+    var temp = Model.Subjects;
+
 }
 
-<h2>ViewSubjects</h2>
+<h2>ViewStaffSubjects</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
 
         <th>
             Subject Name
         </th>
-        <th>
-             @Html.ActionLink("Delete", "Delete")
-        </th>
+        @*<th>
+                 @Html.ActionLink("Delete", "Delete")
+            </th>*@
 
-    <th></th>
+        <th></th>
     </tr>
 
-    @*@foreach (var item in Model)
-        {
-            <tr>
+    @foreach (var item in temp)
+    {
+        <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.SubjectName)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectName)
+            </td>
 
-                <td>
+            <td>
 
-                    @Html.ActionLink("Delete", "DeleteStudentSubjects", new { StudentId = Model.StudentId, SubjectId = item.SubjectId })
-                </td>
-            </tr>
-        }*@
+                @Html.ActionLink("Delete", "DeleteStaffSubjects", new { StaffId = Model.StaffId, SubjectId = item.SubjectId })
+            </td>
+        </tr>
+    }
 
 
 

@@ -314,39 +314,30 @@ namespace LMS.Controllers
             }
         }
 
-        public ActionResult ViewStaffSubjects()
+        public ActionResult ViewStaffSubjects(int id)
         {
             var db = new DB45Entities();
-            
-            //var SubjectsStudent = db.StudentSubjects.Where(c => c.StudentId == id).ToList();
-            //List<Subject> subjects = new List<Subject>();
-            //var getAllData = (from s in db.StudentSubjects
-            //                  join sub in db.Subjects
-            //                  on s.SubjectId equals sub.SubjectId
-            //                  where s.StudentId == id
-            //                  select new
-            //                  {
-            //                      subjectname = sub.SubjectName,
-            //                      subId = sub.SubjectId
 
-            //                  });
 
-            //foreach (var g in getAllData)
-            //{
-            //    Subject s = new Subject();
-            //    s.SubjectId = g.subId;
-            //    s.SubjectName = g.subjectname;
+            //var db = new DB45Entities();
+            var teacher = db.Staffs.FirstOrDefault(c => c.StaffId == id);
+            var d = teacher.Subjects.ToList();
+            SubjectList subject = new SubjectList();
+            subject.Subjects = d;
+            subject.StaffId = teacher.StaffId;
 
-            //    subjects.Add(s);
-            //}
 
-            //StudentViewModel model = new StudentViewModel();
-            //model.allsubjects = subjects;
-            //model.StudentId = id;
-
-            ////sam.allsubjects = c;
-
-            return View("ViewStaffSubjects");
+            return View("ViewStaffSubjects", subject);
+        }
+        public ActionResult DeleteStaffSubjects(int Staffid, int SubjectId)
+        {
+            var db = new DB45Entities();
+            //Subject s = db.Subjects.Find(id);
+            var teacher = db.Staffs.FirstOrDefault(c => c.StaffId == Staffid);
+            var subject = teacher.Subjects.FirstOrDefault(x => x.SubjectId == SubjectId);
+            teacher.Subjects.Remove(subject);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 
