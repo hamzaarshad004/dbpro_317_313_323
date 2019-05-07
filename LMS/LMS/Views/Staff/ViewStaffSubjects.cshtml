@@ -1,0 +1,45 @@
+﻿@model LMS.Models.StaffViewModel
+
+@{
+    ViewBag.Title = "ViewStaffSubjects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //var list = Model.allsubjects;
+}
+
+<h2>ViewSubjects</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Subject Name
+        </th>
+        <th>
+             @Html.ActionLink("Delete", "Delete")
+        </th>
+
+    <th></th>
+    </tr>
+
+    @*@foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectName)
+                </td>
+
+                <td>
+
+                    @Html.ActionLink("Delete", "DeleteStudentSubjects", new { StudentId = Model.StudentId, SubjectId = item.SubjectId })
+                </td>
+            </tr>
+        }*@
+
+
+
+</table>

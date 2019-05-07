@@ -275,7 +275,7 @@ namespace LMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult StaffSubject(int id , SubjectList stsl)
+        public ActionResult StaffSubject(int id , SubjectList model)
         {
             try
             {
@@ -283,26 +283,11 @@ namespace LMS.Controllers
 
                 var db = new DB45Entities();
 
-                var s = db.Subjects.Where(c=>c.SubjectId == stsl.SubjectId);
-               
+                var s = db.Subjects.FirstOrDefault(c=>c.SubjectId == model.SubjectId);
+                var teacher = db.Staffs.FirstOrDefault(c => c.StaffId == id);
+                teacher.Subjects.Add(s);
 
-
-                //SubjectList sa = new SubjectList();
-                //sa.SubjectId = ctvm.SubjectId;
-
-
-                //var S = db.Sections.Where(c => c.SectionId == model.SectionId).First();
-                //S.TotalStudents = S.TotalStudents + 1;
-                //S.Students.Add(db.Students.Where(c => c.StudentId == id).First());
-
-                //db.SaveChanges();
-                //StudentSubject asss = new StudentSubject();
-                //asss.StudentId = assign.StudentId;
-                //asss.SubjectId = assign.SubjectId;
-                //db.StudentSubjects.Add(asss);
-                //db.SaveChanges();
-
-
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -327,6 +312,41 @@ namespace LMS.Controllers
 
                 return View("AddStaff");
             }
+        }
+
+        public ActionResult ViewStaffSubjects()
+        {
+            var db = new DB45Entities();
+            
+            //var SubjectsStudent = db.StudentSubjects.Where(c => c.StudentId == id).ToList();
+            //List<Subject> subjects = new List<Subject>();
+            //var getAllData = (from s in db.StudentSubjects
+            //                  join sub in db.Subjects
+            //                  on s.SubjectId equals sub.SubjectId
+            //                  where s.StudentId == id
+            //                  select new
+            //                  {
+            //                      subjectname = sub.SubjectName,
+            //                      subId = sub.SubjectId
+
+            //                  });
+
+            //foreach (var g in getAllData)
+            //{
+            //    Subject s = new Subject();
+            //    s.SubjectId = g.subId;
+            //    s.SubjectName = g.subjectname;
+
+            //    subjects.Add(s);
+            //}
+
+            //StudentViewModel model = new StudentViewModel();
+            //model.allsubjects = subjects;
+            //model.StudentId = id;
+
+            ////sam.allsubjects = c;
+
+            return View("ViewStaffSubjects");
         }
 
 

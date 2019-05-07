@@ -400,6 +400,7 @@
     <Content Include="Views\Student\AddSubject.cshtml" />
     <Content Include="Views\Student\ViewSubjects.cshtml" />
     <Content Include="Views\Staff\StaffSubject.cshtml" />
+    <Content Include="Views\Staff\ViewStaffSubjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
