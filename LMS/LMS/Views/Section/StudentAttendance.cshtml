@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "StudentAttendance";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
 
 <h2>StudentAttendance</h2>
@@ -23,14 +23,24 @@
             @Html.ValidationMessageFor(model => model.SelectedDate, "", new { @class = "text-danger" })
         </div>
     </div>
+    <table class="table">
+        <tr>
+            <th>
+                Mark
+            </th>
+            <th>
+                Roll No
+            </th>
+        </tr>
+        
+        <div class="form-group">
 
-    <div class="form-group">
-      
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Students, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Students, "", new { @class = "text-danger" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Students, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Students, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
+    </table>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
