@@ -18,6 +18,12 @@ namespace LMS.Models
         public int TotalMarks { get; set; }
         public System.DateTime StartDateTime { get; set; }
         public System.DateTime EndTime { get; set; }
+
+        public string ExamName { get; set; }
+        public string SubjectName { get; set; }
+
+        public IEnumerable<Exam> ExamNames { get; set; }
+        public IEnumerable<Subject> SubjectNames { get; set; }
     }
 
     public class ResultViewModel
@@ -26,5 +32,12 @@ namespace LMS.Models
         public int SubjectId { get; set; }
         public int StudentId { get; set; }
         public int ObtainedMarks { get; set; }
+
+        public string ExamName { get; set; }
+        public string SubjectName { get; set; }
+        public string StudentName { get; set; }
+
+        public IEnumerable<Exam> ExamNames { get; set; }
+        public IEnumerable<Subject> SubjectNames { get; set; }
     }
 }

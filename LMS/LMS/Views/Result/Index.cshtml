@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LMS.Models.ResultViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var modelShow = Model.FirstOrDefault();
+    ViewBag.select = modelShow.StudentId;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddResult", new { id = ViewBag.select})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObtainedMarks)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ObtainedMarks)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "EditResult", new { ExamId = item.ExamId, SubjectId = item.SubjectId, StudentId = item.StudentId }) |
+            @Html.ActionLink("Delete", "Delete", new { ExamId = item.ExamId, SubjectId = item.SubjectId, StudentId = item.StudentId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -191,9 +191,11 @@
       <DependentUpon>LMSDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -402,6 +404,14 @@
     <Content Include="Views\Staff\StaffSubject.cshtml" />
     <Content Include="Views\Staff\ViewStaffSubjects.cshtml" />
     <Content Include="Views\Shared\_Admin_Layout.cshtml" />
+    <Content Include="Views\Exam\AddDateSheet.cshtml" />
+    <Content Include="Views\Exam\Add_EditExam.cshtml" />
+    <Content Include="Views\Exam\DateSheetIndex.cshtml" />
+    <Content Include="Views\Exam\EditDateSheet.cshtml" />
+    <Content Include="Views\Exam\Index.cshtml" />
+    <Content Include="Views\Result\AddResult.cshtml" />
+    <Content Include="Views\Result\EditResult.cshtml" />
+    <Content Include="Views\Result\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

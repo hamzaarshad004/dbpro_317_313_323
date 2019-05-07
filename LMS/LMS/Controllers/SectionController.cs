@@ -13,12 +13,25 @@ namespace LMS.Controllers
         // GET: Section
         public ActionResult Index()
         {
-            List<Section> sections = db.Sections.ToList();
+            var sections = (from s in db.Sections
+                            join p in db.Programs
+                            on s.ProgramId equals p.ProgramId
+                            select new
+                            {
+                                SectionId = s.SectionId,
+                                ProgramId = s.ProgramId,
+                                ProgramName = p.Name,
+                                SectionName = s.SectionName,
+                                Batch = s.Batch,
+                                TotalStudents = s.TotalStudents
+                            });
             List<SectionViewModel> sectionViews = new List<SectionViewModel>();
-            foreach(Section s in sections)
+            foreach (var s in sections)
             {
                 SectionViewModel model = new SectionViewModel();
                 model.SectionId = s.SectionId;
+                model.ProgramId = s.ProgramId;
+                model.ProgramName = s.ProgramName;
                 model.SectionName = s.SectionName;
                 model.Batch = s.Batch;
                 model.TotalStudents = s.TotalStudents ?? 0;
@@ -34,7 +47,7 @@ namespace LMS.Controllers
             Section section = db.Sections.First(c => c.SectionId == id);
             var Students = section.Students;
             List<StudentViewModel> StudentsView = new List<StudentViewModel>();
-            foreach(var S in Students)
+            foreach (var S in Students)
             {
                 StudentViewModel student = new StudentViewModel();
                 Person P = db.People.Where(c => c.PersonId == S.StudentId).First();
@@ -51,7 +64,10 @@ namespace LMS.Controllers
         // GET: Section/Create
         public ActionResult Create()
         {
-            return View("AddSection");
+            var ProgramsView = db.Programs.ToList();
+            SectionViewModel model = new SectionViewModel();
+            model.ProgramsList = ProgramsView;
+            return View("AddSection", model);
         }
 
         // POST: Section/Create
@@ -65,6 +81,7 @@ namespace LMS.Controllers
                 Section s = new Section();
                 s.SectionName = section.SectionName;
                 s.Batch = section.Batch;
+                s.ProgramId = section.ProgramId;
                 s.TotalStudents = 0;
 
                 db.Sections.Add(s);
@@ -87,6 +104,7 @@ namespace LMS.Controllers
             section.SectionId = S.SectionId;
             section.SectionName = S.SectionName;
             section.Batch = S.Batch;
+            section.ProgramName = db.Programs.Where(c => c.ProgramId == S.ProgramId).Select(c => c.Name).FirstOrDefault();
 
             return View("EditSection", section);
         }
@@ -124,7 +142,7 @@ namespace LMS.Controllers
             section.SectionName = model.SectionName;
             section.Batch = model.Batch;
             section.TotalStudents = model.TotalStudents ?? 0;
-
+            section.ProgramName = db.Programs.Where(c => c.ProgramId == model.ProgramId).Select(c => c.Name).FirstOrDefault();
 
 
             return View(section);
@@ -165,7 +183,7 @@ namespace LMS.Controllers
                 {
                     ID = S.StudentId,
                     Display = S.RollNo,
-                    IsChecked = false 
+                    IsChecked = false
                 });
             }
             attendance.Students = checkBoxListItems;
@@ -178,9 +196,9 @@ namespace LMS.Controllers
             int CurrentId = checkDateInDb(model.SelectedDate);
             var Students = model.Students;
 
-            
 
-            foreach(var S in Students)
+
+            foreach (var S in Students)
             {
                 var checkMarked = db.DailyAttendanceStudents.Where(c => c.StudentId == S.ID && c.DateId == CurrentId).FirstOrDefault();
                 if (checkMarked != null)
@@ -212,7 +230,7 @@ namespace LMS.Controllers
                     db.DailyAttendanceStudents.Add(attendanceStudent);
                 }
 
-               
+
             }
 
             db.SaveChanges();
