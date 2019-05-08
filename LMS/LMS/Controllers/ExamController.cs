@@ -111,11 +111,12 @@ namespace LMS.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult DateSheetIndex()
+        public ActionResult DateSheetIndex(int id)
         {
             var getExams = (from e in db.ExamBySubjects
                             join eId in db.Exams on e.ExamId equals eId.ExamId
                             join s in db.Subjects on e.SubjectId equals s.SubjectId
+                            where eId.ExamId == id
                             select new
                             {
                                 ExamIdent = e.ExamId,
@@ -142,13 +143,16 @@ namespace LMS.Controllers
                 models.Add(model);
             }
 
+            ViewBag.ExamId = id;
+
             return View(models);
         }
 
 
-        public ActionResult AddDateSheet()
+        public ActionResult AddDateSheet(int id)
         {
             ExamSubjectsViewModel model = new ExamSubjectsViewModel();
+            model.ExamId = id;
             model.ExamNames = db.Exams.ToList();
             model.SubjectNames = db.Subjects.ToList();
 
@@ -187,11 +191,11 @@ namespace LMS.Controllers
                 db.ExamBySubjects.Add(exam);
                 db.SaveChanges();
 
-                return RedirectToAction("DateSheetIndex");
+                return RedirectToAction("DateSheetIndex", new { id = model.ExamId});
             }
             catch
             {
-                return RedirectToAction("DateSheetIndex");
+                return RedirectToAction("DateSheetIndex", new { id = model.ExamId });
             }
         }
 
@@ -229,13 +233,7 @@ namespace LMS.Controllers
 
                 var ExamSubjects = db.ExamBySubjects.Where(i => Ids.Contains(i.SubjectId) && i.ExamId == model.ExamId);
 
-                foreach (var E in ExamSubjects)
-                {
-                    if (E.StartDateTime == model.StartDateTime)
-                    {
-                        return RedirectToAction("DateSheetIndex");
-                    }
-                }
+               
 
                 var getData = db.ExamBySubjects.Where(c => c.ExamId == ExamId && c.SubjectId == SubjectId).FirstOrDefault();
                 getData.TotalMarks = model.TotalMarks;
@@ -244,11 +242,11 @@ namespace LMS.Controllers
 
                 db.SaveChanges();
 
-                return RedirectToAction("DateSheetIndex");
+                return RedirectToAction("DateSheetIndex", new { id = ExamId });
             }
             catch
             {
-                return RedirectToAction("DateSheetIndex");
+                return RedirectToAction("DateSheetIndex", new { id = ExamId });
             }
         }
 
@@ -266,7 +264,7 @@ namespace LMS.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("DateSheetIndex");
+            return RedirectToAction("DateSheetIndex", new { id = ExamId });
         }
     }
 }

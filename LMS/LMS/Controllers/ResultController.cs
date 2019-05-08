@@ -43,7 +43,7 @@ namespace LMS.Controllers
 
                 models.Add(model);
             }
-
+            ViewBag.id = id;
             return View(models);
         }
 

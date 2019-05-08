@@ -355,5 +355,10 @@ namespace LMS.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult ResultIndex(int id)
+        {
+            return RedirectToAction("Index", "Result", new { id = id });
+        }
     }
 }

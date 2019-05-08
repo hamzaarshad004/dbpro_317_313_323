@@ -135,6 +135,17 @@
             @Html.ActionLink("Timetable List", "Index", "TimeTable")
             @Html.ActionLink("Add Timetable", "Create", "TimeTable")
         </div>
+        <button class="dropdown-btn">
+            <h3>Exam</h3>
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @Html.ActionLink("Exam", "Index", "Exam")
+            @Html.ActionLink("Add Exam", "Create", "Exam")
+        </div>
+        <div>
+            @Html.Partial("_LoginPartial")
+        </div>
  
        
     </div>

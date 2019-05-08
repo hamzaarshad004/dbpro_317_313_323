@@ -2,9 +2,17 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
     var modelShow = Model.FirstOrDefault();
-    ViewBag.select = modelShow.StudentId;
+    if(modelShow != null)
+    {
+        ViewBag.select = modelShow.StudentId;
+    }
+    else
+    {
+        ViewBag.select = ViewBag.id;
+    }
+
 }
 
 <h2>Index</h2>
