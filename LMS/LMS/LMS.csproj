@@ -425,6 +425,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Student\AttendanceReport.cshtml" />
+    <Content Include="Views\Shared\_Admins_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
