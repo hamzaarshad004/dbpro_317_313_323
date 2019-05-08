@@ -12,6 +12,7 @@ namespace LMS.Controllers
 
         DB45Entities db = new DB45Entities();
         // GET: Student
+        [Authorize]
         public ActionResult Index()
         {
             var Students = db.People.Join(db.Students, p => p.PersonId, s => s.StudentId, (p, s) => new { Id = p.PersonId, Name = p.Name, FName = p.FatherName, Address = p.Address, CNIC = p.Cnic, Contact = p.ContactNo, Gender = p.Gender, rollNo = s.RollNo, admDate = s.AdmissionDate, batch = s.Batch, fee = s.MonthlyFee, programId = s.ProgramId }).ToList();
