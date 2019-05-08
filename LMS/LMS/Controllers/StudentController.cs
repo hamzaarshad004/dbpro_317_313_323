@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LMS.Models;
+using LMS.Reports;
 
 namespace LMS.Controllers
 {
@@ -360,6 +362,52 @@ namespace LMS.Controllers
         public ActionResult ResultIndex(int id)
         {
             return RedirectToAction("Index", "Result", new { id = id });
+        }
+
+        public ActionResult AttendanceReport(int id)
+        {
+            return View("AttendanceReport");
+        }
+
+        [HttpPost]
+        public ActionResult AttendanceReport(int id,StudentAttendanceReportModel model)
+        {
+
+            DB45Entities db = new DB45Entities();
+
+            StudentAttendanceReport rd = new StudentAttendanceReport();
+            rd.Load(Path.Combine(Server.MapPath("~/Reports/StudentAttendanceReport.rpt")));
+            var X = (from D in db.DailyAttendanceStudents
+                     join DK in db.DateKeepers
+                     on D.DateId equals DK.Id
+                     join S in db.Students
+                     on D.StudentId equals S.StudentId
+                     where S.StudentId == id
+                     && (DK.CurrentDate.Month == model.Date.Month
+                     && DK.CurrentDate.Year == model.Date.Year)
+                     select new
+                     {
+                         Date = DK.CurrentDate,
+                         AttendanceStatus = D.AttendanceStatus,
+                         RollNo = S.RollNo
+                     }).ToList();
+            List<StudentAttendanceReportModel> modelList = new List<StudentAttendanceReportModel>();
+            foreach (var s in X)
+            {
+                StudentAttendanceReportModel AttendanceModel = new StudentAttendanceReportModel();
+                AttendanceModel.RollNo = s.RollNo;
+                AttendanceModel.Date = s.Date.Date;
+                AttendanceModel.AttendanceStatus = s.AttendanceStatus;
+
+                modelList.Add(AttendanceModel);
+            }
+            rd.SetDataSource(modelList);
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            stream.Seek(0, SeekOrigin.Begin);
+            return File(stream, "application/pdf", "StudentAttendance.pdf");
         }
     }
 }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LMS.Models;
+using LMS.Reports;
 
 namespace LMS.Controllers
 {
@@ -426,6 +428,47 @@ namespace LMS.Controllers
                 return date.Id;
             }
 
+        }
+
+        public ActionResult Export()
+        {
+            var db = new DB45Entities();
+            StaffReport rd = new StaffReport();
+            rd.Load(Path.Combine(Server.MapPath("~/Reports/StaffReport.rpt")));
+            List<StaffViewModel> staffs = new List<StaffViewModel>();
+            var getData = db.People.Join(db.Staffs, p => p.PersonId, s => s.StaffId, (p, s) => new { Id = p.PersonId, Name = p.Name, FName = p.FatherName, Address = p.Address, CNIC = p.Cnic, Contact = p.ContactNo, Gender = p.Gender, Designation = s.Designation, HireDate = s.HireDate, Salary = s.MonthlySalary }).ToList();
+            foreach (var g in getData)
+            {
+                StaffViewModel staff = new StaffViewModel();
+
+                staff.PersonId = g.Id;
+                staff.Name = g.Name;
+                staff.FatherName = g.FName;
+                staff.Address = g.Address;
+                staff.Cnic = g.CNIC;
+                staff.Gender = g.Gender;
+                staff.ContactNo = g.Contact;
+
+                staff.MonthlySalary = g.Salary;
+                staff.HireDate = g.HireDate;
+                staff.Designation = g.Designation;
+
+                staffs.Add(staff);
+            }
+            rd.SetDataSource(staffs);
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            try
+            {
+                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "Staff_List.pdf");
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

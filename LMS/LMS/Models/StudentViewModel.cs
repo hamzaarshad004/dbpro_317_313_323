@@ -75,4 +75,11 @@ namespace LMS.Models
             Students = new List<CheckBoxListItem>();
         }
     }
+
+    public class StudentAttendanceReportModel
+    {
+        public System.DateTime Date { get; set; }
+        public string AttendanceStatus { get; set; }
+        public string RollNo { get; set; }
+    }
 }
