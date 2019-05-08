@@ -86,6 +86,11 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        
+        <div>
+            @Html.Partial("_LoginPartial")
+        </div>
+        
         <button class="dropdown-btn">
             <h3>Staff</h3> 
             <i class="fa fa-caret-down"></i>
@@ -143,9 +148,7 @@
             @Html.ActionLink("Exam", "Index", "Exam")
             @Html.ActionLink("Add Exam", "Create", "Exam")
         </div>
-        <div>
-            @Html.Partial("_LoginPartial")
-        </div>
+         
  
        
     </div>
