@@ -364,6 +364,8 @@ namespace LMS.Controllers
             return RedirectToAction("Index", "Result", new { id = id });
         }
 
+        
+
         public ActionResult AttendanceReport(int id)
         {
             return View("AttendanceReport");
@@ -408,6 +410,63 @@ namespace LMS.Controllers
             Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
             stream.Seek(0, SeekOrigin.Begin);
             return File(stream, "application/pdf", "StudentAttendance.pdf");
+        }
+
+        public ActionResult CheckRollNoExists(string Rollno)
+
+        {
+
+            bool UserExists = false;
+
+
+
+            try
+
+            {
+
+                using (var dbcontext = new DB45Entities())
+
+                {
+                    //join sub in dbcontext.Subjects
+                    //               on temprec.SubjectId equals sub.SubjectId
+
+                    var nameexits = from temprec in dbcontext.Students
+
+                                    where temprec.RollNo.Equals(Rollno.Trim())
+
+
+                                    select temprec;
+
+                    if (nameexits.Count() > 0)
+
+                    {
+
+                        UserExists = true;
+
+                    }
+
+                    else
+
+                    {
+
+                        UserExists = false;
+
+                    }
+
+                }
+
+                return Json(!UserExists, JsonRequestBehavior.AllowGet);
+
+            }
+
+            catch (Exception)
+
+            {
+
+                return Json(false, JsonRequestBehavior.AllowGet);
+
+            }
+
         }
     }
 }

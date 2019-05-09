@@ -9,8 +9,10 @@ namespace LMS.Models
 {
     public class DateKeeperViewModel
     {
+        [Required]
         public int Id { get; set; }
         [DisplayName("Today's Date: ")]
+        [Required]
         public System.DateTime CurrentDate { get; set; }
     }
 }
