@@ -97,9 +97,11 @@ namespace LMS.Models
     {
         [Required]
         public System.DateTime Date { get; set; }
-        [Required]
+    
         public string AttendanceStatus { get; set; }
-        [Required]
+       
         public string RollNo { get; set; }
+        public string Name { get; set; }
+        public string Designation { get; set; }
     }
 }

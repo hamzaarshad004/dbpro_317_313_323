@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LMS.Models;
+using LMS.Reports;
 
 namespace LMS.Controllers
 {
+    [Authorize]
     public class ProgramController : Controller
     {
         DB45Entities db = new DB45Entities();
@@ -139,6 +142,24 @@ namespace LMS.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Export(int id)
+        {
+
+            DB45Entities db = new DB45Entities();
+
+            ProgramSubjects rd = new ProgramSubjects();
+            rd.Load(Path.Combine(Server.MapPath("~/Reports/ProgramSubjects.rpt")));
+            var X = db.Subjects.Where(x => x.ProgramId == id);
+          
+            rd.SetDataSource(X);
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            stream.Seek(0, SeekOrigin.Begin);
+            return File(stream, "application/pdf", "ProgramSubjects.pdf");
         }
     }
 }
