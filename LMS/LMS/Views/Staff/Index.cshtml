@@ -26,21 +26,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Gender)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactNo)
-        </th>
+ 
         <th>
             @Html.DisplayNameFor(model => model.Designation)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HireDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MonthlySalary)
-        </th>
+ 
         <th></th>
     </tr>
 
@@ -58,21 +48,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Gender)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactNo)
-        </td>
+      
         <td>
             @Html.DisplayFor(modelItem => item.Designation)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HireDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MonthlySalary)
-        </td>
+ 
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
             @Html.ActionLink("StaffSubject", "StaffSubject", new { id = item.PersonId }) |

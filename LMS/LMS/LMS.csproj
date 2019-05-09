@@ -388,7 +388,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Staff\AddStaff.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\Edit.cshtml" />
@@ -425,7 +424,6 @@
     <Content Include="Views\Student\ViewSubjects.cshtml" />
     <Content Include="Views\Staff\StaffSubject.cshtml" />
     <Content Include="Views\Staff\ViewStaffSubjects.cshtml" />
-    <Content Include="Views\Shared\_Admin_Layout.cshtml" />
     <Content Include="Views\Exam\AddDateSheet.cshtml" />
     <Content Include="Views\Exam\Add_EditExam.cshtml" />
     <Content Include="Views\Exam\DateSheetIndex.cshtml" />
@@ -439,6 +437,7 @@
     <Content Include="Views\Student\AttendanceReport.cshtml" />
     <Content Include="Views\Shared\_Admins_Layout.cshtml" />
     <Content Include="Views\Staff\StaffAttendanceReport.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

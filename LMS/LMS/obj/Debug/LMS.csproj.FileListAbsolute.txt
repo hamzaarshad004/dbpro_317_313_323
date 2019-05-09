@@ -1579,3 +1579,16 @@ C:\Users\Hamza\Desktop\DB\New folder (6)\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS
 C:\Users\Hamza\Desktop\DB\New folder (6)\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS.csproj.CopyComplete
 C:\Users\Hamza\Desktop\DB\New folder (6)\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS.dll
 C:\Users\Hamza\Desktop\DB\New folder (6)\dbpro_317_313_323\LMS\LMS\obj\Debug\LMS.pdb
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Shoaib Khan\Desktop\DBMS_Project\dbpro_317_313_323\LMS\LMS\bin\stdole.dll
